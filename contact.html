@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Telematics Support - AeroSpeed GPS</title>
+  <meta name="description" content="Get in touch with the AeroSpeed engineering and editorial team. Submit technical inquiries, bug reports, and research collaboration requests.">
+  <meta name="author" content="Dr. Nathan Vance">
+  <link rel="canonical" href="https://aerospeed-gps.com/contact.html">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org ContactPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact AeroSpeed Telematics Labs",
+    "url": "https://aerospeed-gps.com/contact.html",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "AeroSpeed Telematics Labs",
+      "email": "contact@aerospeed-gps.com",
+      "telephone": "+1-408-555-0192",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "450 Innovation Parkway, Suite 300",
+        "addressLocality": "San Jose",
+        "addressRegion": "CA",
+        "postalCode": "95134",
+        "addressCountry": "US"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Speedometer Tool</a></li>
+          <li><a href="articles/index.html" class="nav-link">Knowledge Center</a></li>
+          <li><a href="articles/gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="about.html" class="nav-link">About Engineering</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="legal-page-header">
+      <span class="section-tag">COMMUNICATION & INQUIRIES</span>
+      <h1 class="section-title">Get in Touch with AeroSpeed</h1>
+      <p class="section-subtitle">Have a question regarding satellite telemetry calculations, browser sensor permissions, or editorial corrections? We're here to help.</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Information Card -->
+      <div class="contact-card">
+        <h2 style="font-size:1.6rem; margin-bottom:1.5rem;">Direct Contact Channels</h2>
+        
+        <div style="margin-bottom:1.5rem;">
+          <h3 style="font-size:1rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:0.35rem;">General Inquiries & Support</h3>
+          <a href="mailto:contact@aerospeed-gps.com" style="font-size:1.1rem; font-weight:600; font-family:var(--font-mono);">contact@aerospeed-gps.com</a>
+        </div>
+
+        <div style="margin-bottom:1.5rem;">
+          <h3 style="font-size:1rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:0.35rem;">Editorial & Research Desk</h3>
+          <a href="mailto:editorial@aerospeed-gps.com" style="font-size:1.1rem; font-weight:600; font-family:var(--font-mono);">editorial@aerospeed-gps.com</a>
+        </div>
+
+        <div style="margin-bottom:1.5rem;">
+          <h3 style="font-size:1rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:0.35rem;">Physical Laboratory Office</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.6;">
+            AeroSpeed Telematics Labs<br>
+            450 Innovation Parkway, Suite 300<br>
+            San Jose, CA 95134<br>
+            United States
+          </p>
+        </div>
+
+        <div style="background:var(--bg-tertiary); padding:1rem 1.25rem; border-radius:var(--radius-md); border:1px solid var(--border-subtle); margin-top:2rem;">
+          <h4 style="font-size:0.9rem; color:var(--accent-green); margin-bottom:0.25rem;">⚡ Response Turnaround</h4>
+          <p style="font-size:0.85rem; color:var(--text-secondary); margin:0;">
+            Our engineering desk actively reviews submissions Monday through Friday. You can expect a detailed response within 24 to 48 business hours.
+          </p>
+        </div>
+      </div>
+
+      <!-- Interactive Contact Form -->
+      <div class="contact-card">
+        <h2 style="font-size:1.6rem; margin-bottom:1.5rem;">Send a Message</h2>
+        <form id="contactForm" onsubmit="event.preventDefault(); document.getElementById('formSuccessMsg').style.display='block'; this.reset();">
+          
+          <div class="form-group">
+            <label class="form-label" for="contactName">Your Full Name *</label>
+            <input type="text" id="contactName" class="form-control" placeholder="e.g. John Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactEmail">Email Address *</label>
+            <input type="email" id="contactEmail" class="form-control" placeholder="e.g. john@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactSubject">Subject / Inquiry Topic *</label>
+            <select id="contactSubject" class="form-control" required>
+              <option value="">Select an option</option>
+              <option value="technical">Technical Feedback / Speedometer Accuracy</option>
+              <option value="bug">Bug Report / Browser Compatibility</option>
+              <option value="editorial">Editorial Correction / Research Question</option>
+              <option value="press">Press & Media Inquiry</option>
+              <option value="other">General Feedback</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Message *</label>
+            <textarea id="contactMessage" class="form-control" rows="5" placeholder="Describe your question or telemetry feedback in detail..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            Send Message
+          </button>
+
+          <div id="formSuccessMsg" style="display:none; margin-top:1rem; padding:0.85rem; background:rgba(0,245,160,0.15); border:1px solid var(--accent-green); border-radius:var(--radius-md); color:var(--accent-green); font-size:0.9rem; text-align:center;">
+            ✓ Thank you! Your message has been received by our telematics team.
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 AeroSpeed Telematics Labs. All rights reserved.</div>
+        <div>
+          <a href="index.html">Home</a> · 
+          <a href="about.html">About</a> · 
+          <a href="contact.html">Contact</a> · 
+          <a href="privacy.html">Privacy</a> · 
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

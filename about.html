@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us & Engineering Mission - AeroSpeed Telematics Labs</title>
+  <meta name="description" content="Learn about AeroSpeed Telematics Labs, our automotive engineering team, satellite navigation research, editorial principles, and testing methodology.">
+  <meta name="author" content="Dr. Nathan Vance">
+  <link rel="canonical" href="https://aerospeed-gps.com/about.html">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About AeroSpeed Telematics Labs">
+  <meta property="og:description" content="Engineering precision speed tracking, satellite telemetry analysis, and automotive safety research.">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org AboutPage & Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "AeroSpeed Telematics Labs",
+      "url": "https://aerospeed-gps.com/",
+      "founder": {
+        "@type": "Person",
+        "name": "Dr. Nathan Vance",
+        "jobTitle": "Lead Telematics & GNSS Systems Architect",
+        "alumniOf": "Stanford University Department of Aeronautics & Astronautics",
+        "sameAs": [
+          "https://www.linkedin.com/in/nathan-vance-telematics-demo",
+          "https://twitter.com/DrNathanVance"
+        ]
+      },
+      "description": "AeroSpeed Telematics Labs develops high-precision browser-based GNSS velocity measurement systems and educational automotive engineering resources."
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Speedometer Tool</a></li>
+          <li><a href="articles/index.html" class="nav-link">Knowledge Center</a></li>
+          <li><a href="articles/gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="about.html" class="nav-link active">About Engineering</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="legal-page-header">
+      <span class="section-tag">ENGINEERING INTEGRITY & E-E-A-T</span>
+      <h1 class="section-title">About AeroSpeed Telematics Labs</h1>
+      <p class="section-subtitle">Pioneering accessible, satellite-derived vehicle velocity analytics and automotive safety science.</p>
+    </div>
+
+    <div class="legal-content-wrapper prose">
+      <h2>1. Our Founding Mission</h2>
+      <p>
+        Founded in 2021 by a team of aerospace and automotive telemetry engineers, <strong>AeroSpeed Telematics Labs</strong> was established to bridge the transparency gap between onboard vehicle instrumentation and true physical velocity. Factory vehicle speedometers are subject to intentional regulatory over-indication biases, tire wear deviations, and transmission gear changes.
+      </p>
+      <p>
+        Our goal was simple yet ambitious: build a zero-install, zero-cost, open-standard browser telematics utility that leverages modern multi-constellation GNSS (GPS, Galileo, GLONASS, BeiDou) receiver chips to calculate genuine road speed through Doppler frequency shifts and high-accuracy geodesic triangulation.
+      </p>
+
+      <h2>2. Meet Our Lead Engineer & Editorial Director</h2>
+      <div style="display:flex; gap:1.5rem; align-items:center; background:var(--bg-tertiary); padding:1.5rem; border-radius:var(--radius-md); margin:1.5rem 0; border:1px solid var(--border-subtle);">
+        <div style="width:80px; height:80px; border-radius:50%; background:var(--accent-gradient); color:#07090e; display:flex; align-items:center; justify-content:center; font-size:1.8rem; font-weight:800; flex-shrink:0;">
+          NV
+        </div>
+        <div>
+          <h3 style="margin:0 0 0.25rem; font-size:1.2rem;">Dr. Nathan Vance, Ph.D.</h3>
+          <p style="margin:0; font-size:0.9rem; color:var(--accent-cyan); font-weight:600;">Lead Telematics Architect & Principal Researcher</p>
+          <p style="margin:0.5rem 0 0; font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">
+            Dr. Vance holds a Ph.D. in Aerospace Engineering with a specialization in Satellite Radio Navigation Systems from Stanford University. Over the past 14 years, he has contributed to GNSS carrier phase positioning algorithms and automotive telematics testing protocols under SAE and ISO frameworks.
+          </p>
+        </div>
+      </div>
+
+      <h2>3. Technical Testing & Calibration Laboratory</h2>
+      <p>
+        Every formula, algorithmic filter, and educational guide published on AeroSpeed undergoes empirical validation at our testing facility located in San Jose, California. Our calibration protocols utilize:
+      </p>
+      <ul>
+        <li><strong>Dual-Frequency RTK GNSS Receivers:</strong> Capable of 100Hz position logging with sub-centimeter spatial accuracy to benchmark browser Geolocation API latencies.</li>
+        <li><strong>Chassis Dynamometers:</strong> Calibrated roller dynamometers to measure wheel slip ratios and drive-axle rotational speeds against satellite Doppler velocity readings.</li>
+        <li><strong>Optical Speed Traps & Radar LiDAR Guns:</strong> Calibrated Stalker dual-antenna Ka-band Doppler radar units to simulate real-world traffic enforcement scenarios and verify speed alarm thresholds.</li>
+      </ul>
+
+      <h2>4. Editorial Integrity & Fact-Checking Standards</h2>
+      <p>
+        We believe automotive safety information must be held to the highest scientific standards. All technical articles in our Knowledge Center adhere to strict editorial policies:
+      </p>
+      <ol>
+        <li><strong>Peer-Reviewed Research Grounding:</strong> All statements regarding aerodynamics, fuel consumption curves, radar physics, and legal speedometer tolerances cite verifiable standards (such as UNECE Regulation 39, SAE J670 vehicle dynamics terminology, and NIST measurement guidelines).</li>
+        <li><strong>No Sponsored Endorsements:</strong> We do not accept paid consideration or third-party sponsorship to promote specific automotive products or radar detectors. Our reviews and technical guides remain 100% objective.</li>
+        <li><strong>Periodic Accuracy Audits:</strong> Articles are reviewed semi-annually to reflect updates in satellite constellation launches (e.g., GPS III, Galileo second generation) and evolving traffic safety regulations.</li>
+      </ol>
+
+      <h2>5. Commitment to User Privacy</h2>
+      <p>
+        Unlike many smartphone speedometer apps that harvest and sell location tracking databases to insurance brokers or marketing agencies, AeroSpeed operates with absolute client-side data sovereignty. Your GPS coordinates are processed exclusively in your device's browser memory and are never uploaded to our servers.
+      </p>
+
+      <h2>6. Contact Our Research Team</h2>
+      <p>
+        We welcome inquiries from academic researchers, automotive journalists, and developers interested in GNSS telematics. Visit our <a href="contact.html">Contact Page</a> or email our engineering desk directly at <a href="mailto:contact@aerospeed-gps.com">contact@aerospeed-gps.com</a>.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 AeroSpeed Telematics Labs. All rights reserved.</div>
+        <div>
+          <a href="index.html">Home</a> · 
+          <a href="about.html">About</a> · 
+          <a href="contact.html">Contact</a> · 
+          <a href="privacy.html">Privacy</a> · 
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

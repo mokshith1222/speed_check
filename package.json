@@ -1,0 +1,20 @@
+{
+  "name": "aerospeed-gps",
+  "version": "1.0.0",
+  "description": "AeroSpeed GPS Speedometer & Telematics Knowledge Center",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve . -l 3000",
+    "start": "npx -y serve . -l 3000",
+    "serve": "npx -y serve ."
+  },
+  "keywords": [
+    "gps-speedometer",
+    "telematics",
+    "hud-speedometer",
+    "speed-tracker",
+    "adsense-approved"
+  ],
+  "author": "AeroSpeed Telematics Labs",
+  "license": "MIT"
+}

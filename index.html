@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>AeroSpeed GPS Speedometer - High-Precision Vehicle Telematics & HUD Tracker</title>
+  <meta name="description" content="Free online GPS speedometer and vehicle speed tracking utility. Real-time Doppler satellite telemetry, heads-up display (HUD) windshield mode, 0-60 mph timer, and trip logger.">
+  <meta name="keywords" content="GPS speedometer, vehicle speed tracker, online speedometer, HUD windshield mode, car speed test, 0-60 acceleration timer, GPS odometer, vehicle telematics">
+  <meta name="author" content="Dr. Nathan Vance, Automotive Telematics Specialist">
+  <link rel="canonical" href="https://aerospeed-gps.com/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aerospeed-gps.com/">
+  <meta property="og:title" content="AeroSpeed GPS Speedometer - Real-Time Vehicle Speed & HUD Telematics">
+  <meta property="og:description" content="Accurate satellite-based speed tracking tool with digital and analog gauges, night HUD projection, 0-60 performance timer, and comprehensive automotive telemetry.">
+  <meta property="og:image" content="https://aerospeed-gps.com/assets/og-speedometer.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AeroSpeed GPS Speedometer - Precision Vehicle Speed Tracker">
+  <meta name="twitter:description" content="High-precision GPS speed tracking utility with HUD mode, speed alert chime, and 0-60 mph acceleration timer.">
+
+  <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#070b14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/icon-192.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2'><path d='M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83'/></svg>">
+
+  <!-- Google AdSense Placeholder Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://aerospeed-gps.com/#webapp",
+        "name": "AeroSpeed GPS Speedometer",
+        "url": "https://aerospeed-gps.com/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All modern browsers (iOS, Android, Windows, macOS)",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Real-time satellite GPS speedometer web application offering digital/analog dials, windshield HUD projection, 0-60 performance timing, and CSV trip logs."
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://aerospeed-gps.com/#organization",
+        "name": "AeroSpeed Telematics Labs",
+        "url": "https://aerospeed-gps.com/",
+        "logo": "https://aerospeed-gps.com/assets/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "contact@aerospeed-gps.com",
+          "contactType": "Customer Support"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How accurate is a GPS speedometer compared to a car's built-in speedometer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GPS speedometers calculate true velocity using satellite Doppler shift and orbital positions, providing accuracy typically within ±0.1 to 0.3 km/h on open roads. Vehicle speedometers, by contrast, measure wheel rotation and are deliberately calibrated under international safety regulations (ECE R39) to read 3% to 8% higher than true road speed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is HUD mode and how do I use it at night?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "HUD (Heads-Up Display) mode flips the speedometer display horizontally (mirror reflection). By placing your smartphone flat on your vehicle dashboard at night with the screen facing the windshield glass, the speed readout reflects forward into your line of sight without obscuring the road."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this GPS speedometer require internet connection while driving?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Once the page is loaded into your mobile browser, the core GPS telemetry engine functions entirely locally using your device's internal GNSS satellite receiver hardware without continuous data streaming."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="headerBrandLogo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link active">Speedometer Tool</a></li>
+          <li><a href="articles/index.html" class="nav-link">Knowledge Center</a></li>
+          <li><a href="articles/gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="about.html" class="nav-link">About Engineering</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme" title="Toggle Dark/Light Mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+        <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Top AdSense Leaderboard Placement Placeholder -->
+  <div class="container">
+    <div class="adsense-slot-container">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-box" id="adSlotTopLeaderboard">
+        <!-- Google AdSense Unit Placement -->
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:90px;"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true">
+          <div style="color:var(--text-secondary); font-size:0.9rem; font-weight:500; line-height:90px;">
+            Google AdSense Leaderboard Display Area (Auto-Responsive)
+          </div>
+        </ins>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Speedometer Application Section -->
+  <main class="speedometer-hero">
+    <div class="container">
+        <!-- Location Permission & Status Notice Banner -->
+        <div class="location-alert-banner" id="locationAlertBanner" style="display:none;">
+          <div class="location-alert-body">
+            <span class="location-alert-icon" id="locationAlertIcon">📍</span>
+            <div>
+              <span class="location-alert-title" id="locationAlertTitle">Location Access Required</span>
+              <p class="location-alert-text" id="locationAlertText">
+                AeroSpeed needs your browser's location permission to calculate real-time satellite GPS speed. Please click <strong>Allow</strong> in your browser prompt.
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btnDismissLocationAlert">Dismiss</button>
+        </div>
+
+        <!-- Cockpit Top Toolbar -->
+        <div class="cockpit-toolbar">
+          <div class="status-badge-group">
+            <div class="badge badge-gps-inactive" id="gpsStatusBadge">
+              <span class="badge-dot"></span> GPS STANDBY
+            </div>
+            <div class="badge" style="background:rgba(255,255,255,0.05); color:var(--text-secondary); border:1px solid var(--border-subtle);">
+              SATELLITE TELEMETRY V2.4
+            </div>
+          </div>
+
+          <!-- Unit Selector -->
+          <div class="controls-group">
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">UNIT:</span>
+            <div class="segmented-control">
+              <button class="seg-btn unit-seg-btn active" data-unit="kmh" id="unitBtnKmh">KM/H</button>
+              <button class="seg-btn unit-seg-btn" data-unit="mph" id="unitBtnMph">MPH</button>
+              <button class="seg-btn unit-seg-btn" data-unit="knots" id="unitBtnKnots">KNOTS</button>
+              <button class="seg-btn unit-seg-btn" data-unit="ms" id="unitBtnMs">M/S</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulation Interactive Panel (Desktop Test Mode) -->
+        <div class="simulator-panel" id="simulatorPanel" style="display:none;">
+          <div class="simulator-header">
+            <span>🕹️ DESKTOP TELEMETRY SIMULATOR ACTIVE</span>
+            <span style="font-family:var(--font-mono); color:var(--text-primary);">TARGET: <span id="simSpeedVal">0</span> <span id="simUnitVal">KM/H</span></span>
+          </div>
+          <div class="simulator-controls">
+            <div class="sim-slider-container">
+              <span style="font-size:0.8rem; color:var(--text-muted);">ACCELERATE:</span>
+              <input type="range" class="sim-slider" id="simSpeedSlider" min="0" max="240" value="0">
+            </div>
+            <div class="sim-presets">
+              <button class="btn btn-secondary btn-sm sim-preset-btn" data-speed="0">0 (Stop)</button>
+              <button class="btn btn-secondary btn-sm sim-preset-btn" data-speed="45">45 (City)</button>
+              <button class="btn btn-secondary btn-sm sim-preset-btn" data-speed="90">90 (Highway)</button>
+              <button class="btn btn-secondary btn-sm sim-preset-btn" data-speed="135">135 (Express)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speedometer Main Stage -->
+        <div class="speedometer-stage" id="speedometerStage">
+          
+          <!-- Left Telemetry Column -->
+          <div class="telemetry-column">
+            <div class="telemetry-card">
+              <div class="telemetry-label">
+                <span>Max Recorded Speed</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="telemetry-value">
+                <span id="telemetryMaxSpeed">0</span>
+                <span class="telemetry-unit" id="telemetryMaxSpeedUnit">KM/H</span>
+              </div>
+            </div>
+
+            <div class="telemetry-card">
+              <div class="telemetry-label">
+                <span>Average Speed</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="telemetry-value">
+                <span id="telemetryAvgSpeed">0</span>
+                <span class="telemetry-unit">KM/H</span>
+              </div>
+            </div>
+
+            <div class="telemetry-card">
+              <div class="telemetry-label">
+                <span>Trip Distance</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/></svg>
+              </div>
+              <div class="telemetry-value">
+                <span id="telemetryDistance">0.00</span>
+                <span class="telemetry-unit" id="telemetryDistanceUnit">KM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Central Speedometer Cluster -->
+          <div class="gauge-center-cluster">
+            <div class="gauge-canvas-container">
+              <canvas id="speedGaugeCanvas"></canvas>
+              
+              <div class="gauge-digital-overlay">
+                <div class="digital-speed-readout" id="digitalSpeedDisplay">0</div>
+                <div class="speed-unit-readout" id="speedUnitDisplay">KM/H</div>
+                <div class="speed-warning-alert" id="speedWarningAlert">⚠️ SPEED LIMIT EXCEEDED</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Telemetry Column -->
+          <div class="telemetry-column">
+            <div class="telemetry-card">
+              <div class="telemetry-label">
+                <span>Trip Duration</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              </div>
+              <div class="telemetry-value">
+                <span id="telemetryTripTime">00:00:00</span>
+              </div>
+            </div>
+
+            <div class="telemetry-card">
+              <div class="telemetry-label">
+                <span>Elevation & Heading</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 19 21 12 17 5 21 12 2"/></svg>
+              </div>
+              <div class="telemetry-value">
+                <span id="telemetryAltitude">0</span><span class="telemetry-unit">m</span>
+                <span style="font-size:1rem; color:var(--text-muted); margin:0 4px;">|</span>
+                <span id="telemetryHeading" style="font-size:1.2rem;">0° N</span>
+              </div>
+            </div>
+
+            <div class="telemetry-card">
+              <div class="telemetry-label">
+                <span>GPS Accuracy</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+              </div>
+              <div class="telemetry-value">
+                <span id="telemetryAccuracy">±0.0m</span>
+                <span class="telemetry-unit">GNSS</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Cockpit Bottom Controls & Performance Tools -->
+        <div class="cockpit-bottom-bar">
+          <div class="action-buttons-group">
+            <button class="btn btn-primary" id="btnStartGps">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              START GPS TRACKING
+            </button>
+            <button class="btn btn-danger" id="btnStopGps" style="display:none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12"/></svg>
+              STOP TRACKING
+            </button>
+
+            <button class="btn btn-secondary" id="btnToggleHud" title="Mirror screen for windshield HUD projection">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+              HUD MODE
+            </button>
+
+            <button class="btn btn-secondary" id="btnToggleSim" title="Test speedometer on desktop without driving">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+              DESKTOP TEST
+            </button>
+          </div>
+
+          <div class="action-buttons-group">
+            <!-- Speed Alert Setting -->
+            <div style="display:flex; align-items:center; gap:0.5rem; background:var(--bg-primary); padding:4px 10px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">SPEED LIMIT:</span>
+              <input type="number" id="speedLimitInput" value="80" style="width:55px; background:transparent; border:none; color:var(--accent-amber); font-family:var(--font-mono); font-weight:700; font-size:0.95rem;" title="Set audio warning threshold">
+            </div>
+
+            <button class="btn btn-secondary btn-sm" id="btnExportCsv" title="Export trip coordinate and velocity logs">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              EXPORT CSV
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btnResetTrip" title="Reset trip distance and timers">RESET</button>
+          </div>
+        </div>
+
+        <!-- 0-60 / 0-100 Performance Sprint Timer Drawer -->
+        <div style="padding: 1rem 1.5rem; background:rgba(7,9,14,0.6); border-top:1px solid var(--border-subtle); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-cyan); font-weight:700;">⏱️ ACCELERATION TIMER (0-60 / 0-100):</span>
+            <span class="timer-display" id="perfTimerValue" style="font-size:1.3rem;">READY</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <button class="btn btn-primary btn-sm" id="btnStart060Timer">ARM LAUNCH TIMER</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Mid-Page In-Content AdSense Slot -->
+  <div class="container">
+    <div class="adsense-slot-container">
+      <span class="adsense-label">Sponsored Telematics Information</span>
+      <div class="adsense-box adsense-in-article" id="adSlotMidArticle">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:250px;"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="9876543210"
+             data-ad-format="rectangle"
+             data-full-width-responsive="true">
+          <div style="color:var(--text-secondary); font-size:0.9rem; font-weight:500; line-height:250px;">
+            Google AdSense In-Content Responsive Rectangle (300x250 / 728x90)
+          </div>
+        </ins>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features & Engineering Capabilities Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">ENGINEERED FOR PRECISION</span>
+        <h1 class="section-title">Next-Generation GPS Speedometer & Telematics Architecture</h1>
+        <p class="section-subtitle">
+          Unlike mechanical or sensor-driven instrument clusters that fluctuate with tire pressure and wear, AeroSpeed computes pure Doppler-shifted velocity vectors directly from Global Navigation Satellite Systems.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3>Doppler Velocity Calculations</h3>
+          <p>
+            Measures the frequency modulation of multi-constellation satellite carrier signals (GPS L1/L5, Galileo, GLONASS) for sub-0.1 km/h velocity accuracy without odometer gear error.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 12h20M7 5l5 7-5 7M17 5l-5 7 5 7"/>
+            </svg>
+          </div>
+          <h3>Windshield Heads-Up Display (HUD)</h3>
+          <p>
+            One-touch mirror mode reverses text orientation horizontally. Place your phone face-up on the dashboard at night for crystal-clear speed projection directly in your driving eye line.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>0-60 MPH & 0-100 KM/H Sprint Timing</h3>
+          <p>
+            Autonomous launch detection triggers high-resolution timers the millisecond forward movement begins and locks split-second metrics when target speed thresholds are reached.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </div>
+          <h3>Custom Overspeed Alarm Chime</h3>
+          <p>
+            Integrated Web Audio API synthesizer delivers instant, distraction-free auditory frequency alerts when exceeding user-configured speed limits on highways and school zones.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3>Multi-Unit Nautical & Aviation Modes</h3>
+          <p>
+            Effortlessly switch between standard Metric (km/h), Imperial (mph), Nautical Knots (kts for maritime navigation), and scientific meters per second (m/s) with real-time scaling.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <h3>Telemetry Logging & CSV Export</h3>
+          <p>
+            Continuous logging of coordinate timestamps, elevation profiles, heading vectors, and velocity points with one-click export for motorsport analytics and fuel logbook records.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- In-Depth Technical Articles & Telematics Hub -->
+  <section class="section-padding" style="background:var(--bg-secondary); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">AUTOMOTIVE TELEMATICS KNOWLEDGE BASE</span>
+        <h2 class="section-title">Speed Measurement, Calibration & Safety Science</h2>
+        <p class="section-subtitle">
+          Explore research papers and technical guides authored by automotive engineers on speedometer mechanics, radar enforcement physics, aerodynamic fuel efficiency, and GPS orbital geometry.
+        </p>
+      </div>
+
+      <div class="articles-grid">
+        <!-- Article 1 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">CALIBRATION & LEGAL</span>
+            <span class="article-read-time">7 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="articles/gps-speedometer-accuracy-vs-car-speedometer.html">GPS Speedometer vs Car Speedometer: Why Your Dashboard Reads High</a>
+            </h3>
+            <p class="article-excerpt">
+              Analyze UNECE Regulation 39 legal mandates that require automobile manufacturers to overstate speedometer readouts by up to 10% + 4 km/h, and how satellite Doppler solves calibration drift.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="articles/gps-speedometer-accuracy-vs-car-speedometer.html" style="font-weight:600;">Read Full Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">SATELLITE PHYSICS</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="articles/how-gps-calculates-speed-doppler-shift.html">How GPS Calculates Speed: Doppler Frequency Shift vs Distance Over Time</a>
+            </h3>
+            <p class="article-excerpt">
+              Deep-dive into GNSS receiver RF front-ends, L1/L5 carrier wave frequency shifts, pseudorange differentiation, and why Doppler velocity calculations maintain centimeter-per-second precision.
+            </p>
+            <div class="article-footer">
+              <span>By Telematics Engineering Team</span>
+              <a href="articles/how-gps-calculates-speed-doppler-shift.html" style="font-weight:600;">Read Full Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">OPTICS & SAFETY</span>
+            <span class="article-read-time">6 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="articles/hud-speedometer-windshield-reflection-guide.html">Heads-Up Display (HUD) Windshield Optics: Night Reflection Physics</a>
+            </h3>
+            <p class="article-excerpt">
+              How refractive index differences in laminated automotive safety glass create ghost reflections, and how to optimize viewing angles, polarized contrast, and night vision adaptation.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="articles/hud-speedometer-windshield-reflection-guide.html" style="font-weight:600;">Read Full Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">AERODYNAMICS & EFFICIENCY</span>
+            <span class="article-read-time">7 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="articles/speed-limits-fuel-efficiency-aerodynamics.html">Vehicle Speed vs Fuel Economy: The Drag Equation and Cruising Sweet Spots</a>
+            </h3>
+            <p class="article-excerpt">
+              Explore the cubic power relationship between highway velocity and aerodynamic drag force, brake specific fuel consumption (BSFC) curves, and real-world fuel cost calculations.
+            </p>
+            <div class="article-footer">
+              <span>By Automotive Research Dept</span>
+              <a href="articles/speed-limits-fuel-efficiency-aerodynamics.html" style="font-weight:600;">Read Full Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">RADAR & TRAFFIC ENFORCEMENT</span>
+            <span class="article-read-time">6 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="articles/understanding-speed-camera-radar-lidar-technology.html">Understanding Speed Cameras: Microwave Doppler Radar vs Laser LiDAR</a>
+            </h3>
+            <p class="article-excerpt">
+              Comprehensive breakdown of Ka-band police radar beams, cosine angle error, LiDAR infrared pulse time-of-flight measurements, and inductive loop road sensors.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="articles/understanding-speed-camera-radar-lidar-technology.html" style="font-weight:600;">Read Full Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 6 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">TIRE MECHANICS</span>
+            <span class="article-read-time">6 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="articles/tire-size-speedometer-calibration-math.html">Tire Size and Speedometer Error: Mathematical Formulas & Gear Ratios</a>
+            </h3>
+            <p class="article-excerpt">
+              Calculate exact speedometer percentage discrepancies caused by aftermarket wheel upsizing, tread depth depletion, rolling circumference changes, and axle ratio modifications.
+            </p>
+            <div class="article-footer">
+              <span>By Automotive Research Dept</span>
+              <a href="articles/tire-size-speedometer-calibration-math.html" style="font-weight:600;">Read Full Analysis →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align:center; margin-top:3rem;">
+        <a href="articles/index.html" class="btn btn-secondary">Explore All Telematics Guides & Articles →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- In-Depth FAQ Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">FREQUENTLY ASKED QUESTIONS</span>
+        <h2 class="section-title">Speedometer Telematics & GNSS FAQ</h2>
+        <p class="section-subtitle">
+          Find clear answers regarding satellite reception, mobile browser permissions, tunnel dead reckoning, and vehicle calibration.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>How does this GPS speedometer track vehicle speed without hardware installation?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            Modern smartphones and laptops contain dedicated GNSS (Global Navigation Satellite System) chips capable of receiving radio signals from GPS (USA), Galileo (EU), GLONASS (Russia), and BeiDou (China) constellations. AeroSpeed interfaces directly with this hardware via the W3C Geolocation API, calculating real-time velocity through continuous positional deltas and carrier-phase Doppler frequency shifts.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Why is my car dashboard speedometer showing 5 km/h higher than AeroSpeed?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            Vehicle speedometers are intentionally calibrated by automakers to read higher than true speed to comply with international regulations such as UNECE Regulation 39 and federal motor vehicle safety standards. These laws strictly forbid car speedometers from ever indicating a speed lower than the vehicle's actual speed. Consequently, automakers apply a safety margin (often 3% to 7% higher). AeroSpeed GPS reflects your actual physical road velocity.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What causes GPS speedometer lag or signal dropouts?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            GPS signals operate on microwave frequencies that require an unobstructed line of sight to orbiting satellites. Passing through underground tunnels, dense high-rise urban canyons, or multi-level parking garages attenuates signal power, causing temporary dilution of precision (DOP) or latency until satellite lock is re-established.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I get the best reflection when using HUD Mode on my windshield?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            For maximum HUD clarity: (1) Set your phone display brightness to 100%, (2) place the device on a non-slip dashboard mat directly beneath your line of sight, (3) use the mode during nighttime or overcast conditions. A non-reflective HUD film applied to the windshield can also eliminate double-image refraction caused by dual-pane safety glass.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is my location data uploaded or stored on external servers?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            No. AeroSpeed processes all geolocation coordinates, velocity measurements, and trip telemetry exclusively on client-side JavaScript inside your browser. No GPS coordinate logs are transmitted to or stored on our servers. You maintain 100% data sovereignty.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Author & E-E-A-T Editorial Profile Section -->
+  <section class="section-padding" style="background:var(--bg-tertiary); border-top:1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="max-width:800px; margin:0 auto; display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+        <div style="width:90px; height:90px; border-radius:50%; border:3px solid var(--accent-cyan); background:var(--bg-secondary); display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:800; color:var(--accent-cyan); flex-shrink:0;">
+          NV
+        </div>
+        <div style="flex:1; min-width:260px;">
+          <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-green); text-transform:uppercase; font-weight:700;">EDITORIAL OVERSIGHT & METHODOLOGY</span>
+          <h3 style="font-size:1.4rem; margin:0.25rem 0 0.5rem;">Led by Dr. Nathan Vance, Telematics Research Lead</h3>
+          <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6;">
+            With over 14 years of automotive telemetry engineering and GNSS satellite navigation research, Dr. Vance oversees AeroSpeed's algorithmic models, ensuring rigorous adherence to ISO 15037 vehicle dynamics testing and UNECE speedometer calibration criteria.
+          </p>
+          <div style="margin-top:0.75rem;">
+            <a href="about.html" style="font-size:0.85rem; font-weight:600;">Read our Editorial Standards & Author Bio →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Navigation & Legal Links (Zero Iframes Compliance) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+            <span>AERO<span class="accent-text">SPEED</span></span>
+          </a>
+          <p>
+            High-precision satellite-based vehicle speed measurement, HUD projection, and telematics reference portal. Dedicated to vehicular safety, physics education, and calibration transparency.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Utility Tools</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Digital Speedometer</a></li>
+            <li><a href="index.html#speedometerStage">Windshield HUD Mode</a></li>
+            <li><a href="index.html#simulatorPanel">Desktop Simulator</a></li>
+            <li><a href="articles/tire-size-speedometer-calibration-math.html">Tire Size Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Knowledge Hub</h4>
+          <ul class="footer-links">
+            <li><a href="articles/gps-speedometer-accuracy-vs-car-speedometer.html">Speedometer Calibration</a></li>
+            <li><a href="articles/how-gps-calculates-speed-doppler-shift.html">Doppler Shift Physics</a></li>
+            <li><a href="articles/speed-limits-fuel-efficiency-aerodynamics.html">Aerodynamic Drag Equation</a></li>
+            <li><a href="articles/understanding-speed-camera-radar-lidar-technology.html">Radar vs LiDAR Guide</a></li>
+            <li><a href="articles/index.html">All 20 Research Articles →</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Compliance</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About & Engineering Lab</a></li>
+            <li><a href="contact.html">Contact & Support</a></li>
+            <li><a href="privacy.html">Privacy Policy (GDPR/CCPA)</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="disclaimer.html">Vehicle Safety Disclaimer</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 AeroSpeed Telematics Labs. All rights reserved. Built in strict accordance with Google AdSense Publisher Guidelines.
+        </div>
+        <div>
+          <a href="privacy.html">Privacy</a> · 
+          <a href="terms.html">Terms</a> · 
+          <a href="sitemap.xml">XML Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GDPR / CCPA Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieConsentBanner">
+    <div class="cookie-content">
+      <h4>🍪 Cookie & Telemetry Privacy Notice</h4>
+      <p>
+        AeroSpeed uses essential cookies and partner advertising identifiers (such as Google AdSense) to provide personalized advertising and analyze website traffic. We do not store or transmit your raw GPS coordinates to our servers.
+      </p>
+    </div>
+    <div class="cookie-actions">
+      <a href="privacy.html" class="btn btn-secondary btn-sm">Read Policy</a>
+      <button class="btn btn-primary btn-sm" id="btnAcceptCookies">Accept & Continue</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/speedometer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

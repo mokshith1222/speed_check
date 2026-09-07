@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RTK and Differential GPS: Achieving Sub-Centimeter Velocity Metrology - AeroSpeed</title>
+  <meta name="description" content="Explore Real-Time Kinematic (RTK) and Differential GPS (DGPS) satellite technology. Learn how carrier phase tracking and NTRIP corrections enable millimeter-level vehicle velocity measurement.">
+  <meta name="author" content="Dr. Nathan Vance, Telematics Specialist">
+  <link rel="canonical" href="https://aerospeed-gps.com/articles/differential-gps-rtk-sub-centimeter-velocity.html">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Schema.org BlogPosting & Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "RTK and Differential GPS: Achieving Sub-Centimeter Velocity Metrology",
+        "description": "An in-depth scientific breakdown of RTK satellite positioning, carrier phase tracking, integer ambiguity resolution, and NTRIP correction networks for autonomous vehicle calibration.",
+        "author": {
+          "@type": "Person",
+          "name": "Dr. Nathan Vance",
+          "jobTitle": "Lead Telematics & GNSS Systems Architect"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AeroSpeed Telematics Labs",
+          "url": "https://aerospeed-gps.com/"
+        },
+        "datePublished": "2026-02-14T09:15:00+00:00",
+        "dateModified": "2026-02-25T11:00:00+00:00",
+        "mainEntityOfPage": "https://aerospeed-gps.com/articles/differential-gps-rtk-sub-centimeter-velocity.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aerospeed-gps.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": "https://aerospeed-gps.com/articles/index.html" },
+          { "@type": "ListItem", "position": 3, "name": "RTK & Differential GPS", "item": "https://aerospeed-gps.com/articles/differential-gps-rtk-sub-centimeter-velocity.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Speedometer Tool</a></li>
+          <li><a href="index.html" class="nav-link active">Knowledge Center</a></li>
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="../about.html" class="nav-link">About Engineering</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumbs" style="margin-top:2rem;">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Knowledge Center</a>
+      <span>/</span>
+      <span>Advanced Geodesy & RTK Systems</span>
+    </div>
+
+    <div class="article-header">
+      <h1 class="article-main-title">RTK and Differential GPS: Achieving Sub-Centimeter Velocity Metrology</h1>
+      <p style="color:var(--text-secondary); font-size:1.15rem; line-height:1.6;">
+        Standard satellite GPS delivers 2 to 5 meters of positional accuracy. Discover how Real-Time Kinematic (RTK) carrier phase tracking and NTRIP reference base stations achieve sub-centimeter positioning and ultra-precise velocity ground truth.
+      </p>
+
+      <div class="author-meta-box">
+        <div class="author-avatar">NV</div>
+        <div class="author-info-text">
+          <h4>By Dr. Nathan Vance, Ph.D.</h4>
+          <p>Published February 14, 2026 · Updated February 25, 2026 · 8 min read (1,620 words)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top AdSense -->
+    <div class="adsense-slot-container" style="margin:1.5rem 0;">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-box">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:90px;"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true">
+          <div style="color:var(--text-muted); font-size:0.85rem; line-height:90px;">
+            Google AdSense Responsive Header Unit
+          </div>
+        </ins>
+      </div>
+    </div>
+
+    <div class="article-content-container">
+      <article class="prose">
+        <h2>1. The Limitations of Standard Pseudorange GPS</h2>
+        <p>
+          Standard commercial GNSS receivers—including the chip inside your smartphone used by our <a href="../index.html">AeroSpeed Speedometer</a>—compute position by measuring the time delay of pseudorandom digital noise codes (such as the GPS C/A code at 1.023 MHz).
+        </p>
+        <p>
+          Because electromagnetic radio signals travel at the speed of light ($c \approx 299,792,458 \text{ m/s}$), an error of just 10 nanoseconds in satellite clock synchronization or ionospheric transit time introduces a <strong>3-meter position error</strong>.
+        </p>
+        <p>
+          For autonomous vehicle lane-level positioning, high-speed rail control, and certified automotive crash testing, 3-meter error is unacceptable. This demand created <strong>Real-Time Kinematic (RTK)</strong> positioning.
+        </p>
+
+        <h2>2. The Carrier Phase Tracking Breakthrough</h2>
+        <p>
+          Instead of aligning coarse digital code pulses (which have a wavelength of approximately 300 meters), RTK directly measures the physical <strong>carrier radio waves</strong> themselves:
+        </p>
+        <ul>
+          <li><strong>GPS L1 Carrier Frequency:</strong> $1575.42 \text{ MHz}$ ($\lambda = \frac{c}{f} \approx 19.03 \text{ cm}$)</li>
+          <li><strong>GPS L2 Carrier Frequency:</strong> $1227.60 \text{ MHz}$ ($\lambda \approx 24.42 \text{ cm}$)</li>
+          <li><strong>GPS L5 / Galileo E5a:</strong> $1176.45 \text{ MHz}$ ($\lambda \approx 25.48 \text{ cm}$)</li>
+        </ul>
+        <p>
+          By measuring fractional phase shifts down to 1% of a carrier wave cycle, an RTK receiver can detect physical displacements of <strong>1.9 millimeters</strong>!
+        </p>
+
+        <div class="formula-card">
+          <div class="formula-title">Carrier Phase Observation Equation</div>
+          <div class="formula-math">\Phi = \frac{1}{\lambda} \left( \rho + c(\delta t_r - \delta t^s) - I + T \right) + N + \epsilon</div>
+          <p class="formula-desc">Where $\Phi$ is measured carrier phase (cycles), $\rho$ is true geometric range, $N$ is the integer cycle ambiguity, $I$ is ionospheric delay, and $T$ is tropospheric delay.</p>
+        </div>
+
+        <h2>3. How RTK Base Stations and NTRIP Work</h2>
+        <p>
+          The fundamental challenge with carrier phase tracking is the <strong>Integer Ambiguity Problem ($N$)</strong>: the receiver knows the exact fraction of a 19-cm wave, but doesn't immediately know how many full wave cycles ($N$) exist between the satellite in medium Earth orbit (20,200 km altitude) and the vehicle.
+        </p>
+        <p>
+          To solve this, RTK pairs the vehicle receiver (the <em>Rover</em>) with a stationary reference station (the <em>Base</em>) installed at an exactly surveyed geodetic monument.
+        </p>
+        <ol>
+          <li><strong>Error Cancellation:</strong> Because the Base Station knows its precise physical coordinates to millimeter accuracy, it calculates the exact atmospheric distortion errors currently affecting all satellites in view.</li>
+          <li><strong>Real-Time Correction Stream (RTCM):</strong> The Base streams correction packets (using the RTCM 3.x standard) over cellular internet using <strong>NTRIP</strong> (Networked Transport of RTCM via Internet Protocol).</li>
+          <li><strong>Double-Differencing Algorithm:</strong> The vehicle's RTK computer subtracts the Base errors from its own measurements, mathematically canceling out satellite clock bias, satellite orbit drift, and 99% of atmospheric delays.</li>
+        </ol>
+
+        <h2>4. Velocity Metrology: Doppler vs RTK Phase Rates</h2>
+        <p>
+          How does RTK enhance vehicle speed calculations?
+        </p>
+        <ul>
+          <li><strong>Standard Doppler Velocity:</strong> As detailed in our <a href="how-gps-calculates-speed-doppler-shift.html">Doppler Velocity Physics Guide</a>, consumer GPS calculates velocity from carrier frequency shift with an accuracy of $\pm 0.1 \text{ km/h}$.</li>
+          <li><strong>RTK Time-Differenced Carrier Phase (TDCP):</strong> RTK samples carrier phase differences between consecutive epochs at 20 Hz to 100 Hz. This yields instantaneous 3D velocity vectors with an accuracy of <strong>$\pm 0.01 \text{ km/h}$ ($\pm 2.7 \text{ mm/s}$)</strong>.</li>
+        </ul>
+
+        <div class="callout-box info">
+          <h4>Industry Application</h4>
+          <p>
+            Automotive manufacturers use RTK multi-antenna setups to measure not only true vehicle speed, but also dynamic chassis <strong>slip angle ($\beta$)</strong>, roll angle, and pitch during high-speed emergency lane change maneuvers (ISO 3888-2 elk test).
+          </p>
+        </div>
+
+        <h2>5. Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <div class="faq-question">Can smartphones use RTK?</div>
+            <div class="faq-answer">
+              Modern flagship phones with dual-frequency GNSS chips (like Broadcom BCM47765) can output raw carrier phase measurements (Android GNSS Raw Measurements API). When connected to a local NTRIP caster, phones can achieve 20–50 cm positioning under clear sky conditions.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What is an RTK "Fixed" vs "Float" state?</div>
+            <div class="faq-answer">
+              "RTK Fixed" occurs when the receiver has successfully resolved the integer cycle ambiguities ($N$), delivering 1-2 cm accuracy. "RTK Float" occurs when ambiguity is unresolved due to multipath reflections or poor satellite geometry, yielding 20-50 cm accuracy.
+            </div>
+          </div>
+        </div>
+
+        <div class="related-guides-box" style="margin-top:3rem; padding:1.5rem; background:var(--card-bg); border-radius:12px; border:1px solid var(--border-color);">
+          <h3 style="margin-top:0;">Related Technical Research Guides</h3>
+          <ul style="margin-bottom:0; line-height:1.8;">
+            <li><a href="how-gps-calculates-speed-doppler-shift.html">How GPS Calculates Speed: Doppler Frequency Shift vs Distance Over Time</a></li>
+            <li><a href="smartphone-gnss-vs-dedicated-telematics-hardware.html">Smartphone GPS vs Dedicated Telematics Hardware</a></li>
+            <li><a href="autonomous-vehicle-speed-estimation-sensor-fusion.html">How Autonomous Vehicles Estimate Velocity: Sensor Fusion Systems</a></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="brand-logo footer-logo">
+          <span>AERO<span class="accent-text">SPEED</span></span>
+        </div>
+        <p class="footer-text">
+          High-precision GNSS velocity metrology, vehicle telematics research, and heads-up display optics.
+        </p>
+        <p class="copyright">© 2026 AeroSpeed Telematics Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Essential Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">Live GPS Speedometer</a></li>
+          <li><a href="../index.html#hudMode">HUD Windshield Projection</a></li>
+          <li><a href="../index.html#timerMode">0-60 MPH Performance Timer</a></li>
+          <li><a href="../index.html#tripLogger">CSV Telematics Trip Logger</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Knowledge Center</h4>
+        <ul class="footer-links">
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html">Speedometer Calibration</a></li>
+          <li><a href="differential-gps-rtk-sub-centimeter-velocity.html">RTK & Differential GPS</a></li>
+          <li><a href="how-gps-calculates-speed-doppler-shift.html">Doppler Velocity Physics</a></li>
+          <li><a href="index.html">All 20 Research Articles →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Compliance & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html">About Engineering Team</a></li>
+          <li><a href="../contact.html">Contact Laboratory</a></li>
+          <li><a href="../privacy.html">Privacy Policy (GDPR/CCPA)</a></li>
+          <li><a href="../terms.html">Terms & Conditions</a></li>
+          <li><a href="../disclaimer.html">Telematics Disclaimer</a></li>
+          <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

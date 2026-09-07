@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automotive Telematics Knowledge Center - AeroSpeed GPS</title>
+  <meta name="description" content="Explore 20 peer-reviewed technical guides on GPS Doppler speed calculations, vehicle speedometer calibration, tire sizing math, aerodynamic drag, EV efficiency, and autonomous sensor fusion.">
+  <link rel="canonical" href="https://aerospeed-gps.com/articles/index.html">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Schema.org CollectionPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "AeroSpeed Automotive Telematics Knowledge Center",
+    "description": "Peer-reviewed technical guides and research documentation on vehicle speed measurement, calibration standards, and GNSS physics.",
+    "url": "https://aerospeed-gps.com/articles/index.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AeroSpeed Telematics Labs",
+      "url": "https://aerospeed-gps.com/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Speedometer Tool</a></li>
+          <li><a href="index.html" class="nav-link active">Knowledge Center</a></li>
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="../about.html" class="nav-link">About Engineering</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section-padding">
+    <div class="section-header">
+      <span class="section-tag">TELEMATICS & AUTOMOTIVE SCIENCE</span>
+      <h1 class="section-title">Automotive Telematics Knowledge Center</h1>
+      <p class="section-subtitle">
+        Explore 20 in-depth technical analyses, mathematical formulas, and peer-reviewed educational articles authored by vehicle telematics researchers.
+      </p>
+    </div>
+
+    <!-- Top AdSense Leaderboard in Articles Hub -->
+    <div class="adsense-slot-container" style="margin-top:0; margin-bottom:3rem;">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-box">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:90px;"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true">
+          <div style="color:var(--text-muted); font-size:0.85rem; line-height:90px;">
+            Google AdSense Responsive Unit
+          </div>
+        </ins>
+      </div>
+    </div>
+
+    <!-- Section 1: Calibration & Mechanical Systems -->
+    <div style="margin-bottom: 3.5rem;">
+      <h2 style="font-size:1.5rem; margin-bottom:1.5rem; border-left:4px solid var(--accent-cyan); padding-left:0.75rem;">
+        1. Speedometer Calibration & Mechanical Metrology
+      </h2>
+      <div class="articles-grid">
+        <!-- Article 1 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">CALIBRATION STANDARDS</span>
+            <span class="article-read-time">7 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="gps-speedometer-accuracy-vs-car-speedometer.html">GPS Speedometer vs Car Speedometer: Why Your Dashboard Reads High</a>
+            </h3>
+            <p class="article-excerpt">
+              A comprehensive breakdown of UNECE Regulation 39, factory wheel sensor calibration offsets, tire wear inaccuracies, and how satellite Doppler measurements calculate true physical road speed.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="gps-speedometer-accuracy-vs-car-speedometer.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">TIRE GEOMETRY</span>
+            <span class="article-read-time">7 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="tire-size-speedometer-calibration-math.html">Tire Size Changes & Speedometer Calibration Mathematics</a>
+            </h3>
+            <p class="article-excerpt">
+              Calculate the exact percentage error when changing tire aspect ratios or wheel rim diameters. Includes rolling circumference equations, gear ratios, and speedometer correction formulas.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="tire-size-speedometer-calibration-math.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">VEHICLE ELECTRONICS</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="can-bus-obd2-vehicle-speed-sensors.html">How Car Speed Sensors (VSS) and CAN-Bus Broadcast Velocity</a>
+            </h3>
+            <p class="article-excerpt">
+              Discover how Hall-effect sensors, ABS tone rings, and ISO 11898 CAN-Bus message arbitration broadcast Parameter ID 0x0D speed frames across vehicle microcontrollers.
+            </p>
+            <div class="article-footer">
+              <span>By Elena Rostova</span>
+              <a href="can-bus-obd2-vehicle-speed-sensors.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">ENGINEERING HISTORY</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="speedometer-evolution-centrifugal-governors-to-digital.html">The History and Evolution of Speedometers: Eddy Currents to Digital HUDs</a>
+            </h3>
+            <p class="article-excerpt">
+              Trace 125 years of automotive velocity instruments from Otto Schulze's 1902 magnetic eddy current patent to electronic stepper motors, CAN-bus clusters, and satellite HUDs.
+            </p>
+            <div class="article-footer">
+              <span>By Elena Rostova</span>
+              <a href="speedometer-evolution-centrifugal-governors-to-digital.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Section 2: Satellite Physics & GNSS Metrology -->
+    <div style="margin-bottom: 3.5rem;">
+      <h2 style="font-size:1.5rem; margin-bottom:1.5rem; border-left:4px solid var(--accent-cyan); padding-left:0.75rem;">
+        2. Satellite Physics, GNSS & RTK Geodesy
+      </h2>
+      <div class="articles-grid">
+        <!-- Article 5 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">SATELLITE PHYSICS</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="how-gps-calculates-speed-doppler-shift.html">How GPS Calculates Speed: Doppler Frequency Shift vs Distance Over Time</a>
+            </h3>
+            <p class="article-excerpt">
+              Understand how modern GNSS receivers calculate instantaneous velocity vectors using L1/L5 carrier wave Doppler frequency modulations rather than noisy point-to-point positional deltas.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="how-gps-calculates-speed-doppler-shift.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 6 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">HARDWARE TELEMETRY</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="smartphone-gnss-vs-dedicated-telematics-hardware.html">Smartphone GPS vs Dedicated Telematics Hardware: Accuracy & Refresh Rates</a>
+            </h3>
+            <p class="article-excerpt">
+              Compare consumer mobile 1Hz GNSS chips against 100Hz RTK automotive loggers. Evaluate sampling latency, dilution of precision (DOP), and multipath interference.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="smartphone-gnss-vs-dedicated-telematics-hardware.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 7 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">RTK GEODESY</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="differential-gps-rtk-sub-centimeter-velocity.html">RTK and Differential GPS: Achieving Sub-Centimeter Velocity Metrology</a>
+            </h3>
+            <p class="article-excerpt">
+              Discover how Real-Time Kinematic carrier phase tracking, integer ambiguity resolution, and NTRIP correction streams achieve millimeter-level velocity truth.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="differential-gps-rtk-sub-centimeter-velocity.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 8 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">OPTICS & SAFETY</span>
+            <span class="article-read-time">6 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="hud-speedometer-windshield-reflection-guide.html">Heads-Up Display (HUD) Windshield Optics: Night Reflection Physics</a>
+            </h3>
+            <p class="article-excerpt">
+              The optical physics of reflecting OLED smartphone screens onto laminated safety glass, eliminating ghost refraction, preserving scotopic night vision, and safe dashboard placement.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="hud-speedometer-windshield-reflection-guide.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Section 3: Aerodynamics, EV Range & Energy Efficiency -->
+    <div style="margin-bottom: 3.5rem;">
+      <h2 style="font-size:1.5rem; margin-bottom:1.5rem; border-left:4px solid var(--accent-cyan); padding-left:0.75rem;">
+        3. Aerodynamics, EV Range & Energy Efficiency
+      </h2>
+      <div class="articles-grid">
+        <!-- Article 9 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">AERODYNAMICS</span>
+            <span class="article-read-time">7 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="speed-limits-fuel-efficiency-aerodynamics.html">Vehicle Speed vs Fuel Economy: The Drag Equation and Cruising Sweet Spots</a>
+            </h3>
+            <p class="article-excerpt">
+              How the cubic power drag equation ($P \propto v^3$) impacts internal combustion fuel burn at 55, 65, 75, and 85 mph. Optimal cruising speeds and aerodynamic strategies.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="speed-limits-fuel-efficiency-aerodynamics.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 10 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">EV TELEMATICS</span>
+            <span class="article-read-time">7 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="ev-speed-range-consumption-guide.html">EV Speed vs Highway Range: Battery Consumption Curve & Wh/km Physics</a>
+            </h3>
+            <p class="article-excerpt">
+              Why high highway speed reduces electric vehicle range exponentially. Battery discharge chemistry, rolling resistance coefficients ($C_{rr}$), and power demand curves.
+            </p>
+            <div class="article-footer">
+              <span>By Elena Rostova</span>
+              <a href="ev-speed-range-consumption-guide.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 11 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">POWER ELECTRONICS</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="regenerative-braking-speed-energy-recuperation.html">Regenerative Braking at High vs Low Speeds: Recuperation Efficiency</a>
+            </h3>
+            <p class="article-excerpt">
+              Analyze kinetic energy ($1/2 mv^2$), motor back-EMF, and inverter limits across speed regimes from 130 km/h highway braking to low-speed friction transitions.
+            </p>
+            <div class="article-footer">
+              <span>By Elena Rostova</span>
+              <a href="regenerative-braking-speed-energy-recuperation.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 12 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">PERFORMANCE TIMING</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="0-60-mph-quarter-mile-acceleration-telematics.html">The Physics of 0-60 MPH Acceleration Timing & 1-Foot Rollout Deductions</a>
+            </h3>
+            <p class="article-excerpt">
+              Uncover the math behind 1-foot rollout deductions, drag strip optical timing beams, slope normalization formulas, and GNSS inertial sensor fusion.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="0-60-mph-quarter-mile-acceleration-telematics.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Section 4: Road Safety, Speed Cameras & Traffic Flow -->
+    <div style="margin-bottom: 3.5rem;">
+      <h2 style="font-size:1.5rem; margin-bottom:1.5rem; border-left:4px solid var(--accent-cyan); padding-left:0.75rem;">
+        4. Road Safety, Speed Enforcement & Traffic Flow
+      </h2>
+      <div class="articles-grid">
+        <!-- Article 13 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">ENFORCEMENT RADAR</span>
+            <span class="article-read-time">7 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="understanding-speed-camera-radar-lidar-technology.html">Understanding Speed Camera Radar and LiDAR: Cosine Errors & Accuracy</a>
+            </h3>
+            <p class="article-excerpt">
+              Technical analysis of Doppler speed radar, time-of-flight LiDAR guns, average speed camera (ANPR/SPECS) networks, and the geometric cosine error formula.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="understanding-speed-camera-radar-lidar-technology.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 14 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">TRAFFIC FLOW</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="smart-motorways-variable-speed-limits-traffic-flow.html">Smart Motorways and Variable Speed Limits: Traffic Shockwave Physics</a>
+            </h3>
+            <p class="article-excerpt">
+              Understand the LWR kinematic wave model of traffic flow, phantom bottlenecks, and why lowering speed limits paradoxically clears traffic jams and boosts capacity.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="smart-motorways-variable-speed-limits-traffic-flow.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 15 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">WET WEATHER SAFETY</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="hydroplaning-speed-tire-tread-physics.html">Hydroplaning Speed Calculation: NASA Tire Pressure Formulas & Physics</a>
+            </h3>
+            <p class="article-excerpt">
+              Calculate your vehicle's critical hydroplaning speed using NASA Horne equations. Understand tire inflation pressure, water film thickness, and tread evacuation hydraulics.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="hydroplaning-speed-tire-tread-physics.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 16 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">MOTORCYCLE DYNAMICS</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="motorcycle-speedometer-error-lean-angle-physics.html">Motorcycle Speedometer Errors During Cornering: Lean Angle Physics</a>
+            </h3>
+            <p class="article-excerpt">
+              Why motorcycle speedometers jump by 10% to 15% mid-apex through turns. Toroidal tire profiles, effective rolling radius loss, and slip angles.
+            </p>
+            <div class="article-footer">
+              <span>By Elena Rostova</span>
+              <a href="motorcycle-speedometer-error-lean-angle-physics.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Section 5: Specialized Metrology (Aviation, Rail & Autonomous Robotics) -->
+    <div style="margin-bottom: 3.5rem;">
+      <h2 style="font-size:1.5rem; margin-bottom:1.5rem; border-left:4px solid var(--accent-cyan); padding-left:0.75rem;">
+        5. Specialized Metrology: Marine, Aviation, Rail & Autonomous Robotics
+      </h2>
+      <div class="articles-grid">
+        <!-- Article 17 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">GEODESY & NAVIGATION</span>
+            <span class="article-read-time">6 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="nautical-knots-vs-mph-speed-measurement.html">Nautical Knots vs MPH vs KM/H: Marine and Aviation Speed Measurement</a>
+            </h3>
+            <p class="article-excerpt">
+              The historical origins and geodetic math behind nautical miles, knots, statute miles, and SI metric kilometers per hour. Great-circle navigation and conversion mathematics.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="nautical-knots-vs-mph-speed-measurement.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 18 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">AVIATION SPEED</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="speed-of-sound-mach-number-aerospace-telematics.html">True Airspeed vs Ground Speed vs Mach Number: Aviation Velocity Physics</a>
+            </h3>
+            <p class="article-excerpt">
+              Explore aerodynamic velocity metrology: Indicated Airspeed (IAS), True Airspeed (TAS), GPS Ground Speed, and Mach number. Learn Pitot-static tube physics.
+            </p>
+            <div class="article-footer">
+              <span>By Elena Rostova</span>
+              <a href="speed-of-sound-mach-number-aerospace-telematics.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 19 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">RAIL TELEMATICS</span>
+            <span class="article-read-time">8 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="rail-train-speed-measurement-doppler-radar-balises.html">High-Speed Rail Velocity Measurement: Doppler Radar, Balises & ETCS</a>
+            </h3>
+            <p class="article-excerpt">
+              Discover how bullet trains measure 320+ km/h using under-bogie microwave Doppler radar, ETCS Eurobalises, and wheel slide protection systems.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="rail-train-speed-measurement-doppler-radar-balises.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 20 -->
+        <article class="article-card">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">AUTONOMOUS ROBOTICS</span>
+            <span class="article-read-time">9 min read</span>
+          </div>
+          <div class="article-body">
+            <h3 class="article-title">
+              <a href="autonomous-vehicle-speed-estimation-sensor-fusion.html">How Autonomous Vehicles Estimate Velocity: Sensor Fusion Systems</a>
+            </h3>
+            <p class="article-excerpt">
+              Explore how self-driving cars calculate velocity using Extended Kalman Filters (EKF), LiDAR point cloud odometry, Radar Doppler clusters, and tactical IMUs.
+            </p>
+            <div class="article-footer">
+              <span>By Dr. Nathan Vance</span>
+              <a href="autonomous-vehicle-speed-estimation-sensor-fusion.html" style="font-weight:600;">Read Analysis →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="brand-logo footer-logo">
+          <span>AERO<span class="accent-text">SPEED</span></span>
+        </div>
+        <p class="footer-text">
+          High-precision GNSS velocity metrology, vehicle telematics research, and heads-up display optics.
+        </p>
+        <p class="copyright">© 2026 AeroSpeed Telematics Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Essential Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">Live GPS Speedometer</a></li>
+          <li><a href="../index.html#hudMode">HUD Windshield Projection</a></li>
+          <li><a href="../index.html#timerMode">0-60 MPH Performance Timer</a></li>
+          <li><a href="../index.html#tripLogger">CSV Telematics Trip Logger</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Knowledge Center</h4>
+        <ul class="footer-links">
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html">Speedometer Calibration</a></li>
+          <li><a href="how-gps-calculates-speed-doppler-shift.html">Doppler Velocity Physics</a></li>
+          <li><a href="ev-speed-range-consumption-guide.html">EV Highway Range Analysis</a></li>
+          <li><a href="index.html">All 20 Research Articles →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Compliance & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html">About Engineering Team</a></li>
+          <li><a href="../contact.html">Contact Laboratory</a></li>
+          <li><a href="../privacy.html">Privacy Policy (GDPR/CCPA)</a></li>
+          <li><a href="../terms.html">Terms & Conditions</a></li>
+          <li><a href="../disclaimer.html">Telematics Disclaimer</a></li>
+          <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

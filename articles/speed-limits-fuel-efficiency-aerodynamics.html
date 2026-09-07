@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Speed vs Fuel Efficiency: Aerodynamic Drag Equation - AeroSpeed</title>
+  <meta name="description" content="Master the physics of vehicle aerodynamics, the cubic power drag equation, and discover the mathematical sweet spot speeds for maximum fuel economy and EV range.">
+  <meta name="author" content="Dr. Nathan Vance">
+  <link rel="canonical" href="https://aerospeed-gps.com/articles/speed-limits-fuel-efficiency-aerodynamics.html">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Vehicle Speed vs Fuel Economy: The Drag Equation and Cruising Sweet Spots",
+    "description": "Mathematical and physical analysis of how velocity increases aerodynamic drag quadratically and power requirements cubically.",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Nathan Vance",
+      "jobTitle": "Lead Telematics & GNSS Systems Architect"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AeroSpeed Telematics Labs",
+      "url": "https://aerospeed-gps.com/"
+    },
+    "datePublished": "2026-02-01T08:00:00+00:00",
+    "mainEntityOfPage": "https://aerospeed-gps.com/articles/speed-limits-fuel-efficiency-aerodynamics.html"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Speedometer Tool</a></li>
+          <li><a href="index.html" class="nav-link active">Knowledge Center</a></li>
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="../about.html" class="nav-link">About Engineering</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumbs" style="margin-top:2rem;">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Knowledge Center</a>
+      <span>/</span>
+      <span>Aerodynamics & Fuel Economics</span>
+    </div>
+
+    <div class="article-header">
+      <h1 class="article-main-title">Vehicle Speed vs Fuel Economy: The Drag Equation and Cruising Sweet Spots</h1>
+      <p style="color:var(--text-secondary); font-size:1.15rem; line-height:1.6;">
+        Why does driving 120 km/h consume disproportionately more gasoline and battery charge than cruising at 90 km/h? Analyze fluid dynamics, rolling resistance friction, and engine efficiency maps.
+      </p>
+
+      <div class="author-meta-box">
+        <div class="author-avatar">NV</div>
+        <div class="author-info-text">
+          <h4>By Dr. Nathan Vance, Ph.D.</h4>
+          <p>Published February 1, 2026 · 7 min read (1,340 words)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ad Placement -->
+    <div class="adsense-slot-container" style="margin:1.5rem 0;">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-box">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:90px;"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true">
+          <div style="color:var(--text-muted); font-size:0.85rem; line-height:90px;">
+            Google AdSense Responsive Header Banner
+          </div>
+        </ins>
+      </div>
+    </div>
+
+    <div class="article-content-container">
+      <article class="prose">
+        <h2>1. The Non-Linear Cost of Speed</h2>
+        <p>
+          Most drivers understand intuitively that driving faster burns more fuel. However, few motorists appreciate just how steep and unforgiving the underlying physical penalty curve is. Increasing your cruising speed from <strong>100 km/h (62 mph)</strong> to <strong>130 km/h (81 mph)</strong> represents a 30% increase in speed, but it typically demands <strong>45% to 65% more engine power</strong> and increases total fuel consumption by <strong>25% to 35%</strong> per kilometer.
+        </p>
+        <p>
+          To understand why this happens, we must examine the fundamental forces opposing vehicle motion on a roadway.
+        </p>
+
+        <h2>2. Total Road Load Equation</h2>
+        <p>
+          When a vehicle moves at constant velocity along a flat, paved highway, the tractive effort $F_{\text{traction}}$ required from the engine or electric motor equals the sum of two dominant resistive forces:
+        </p>
+        <p>
+          $$F_{\text{total}} = F_{\text{rolling}} + F_{\text{aerodynamic}}$$
+        </p>
+        
+        <h3>A. Rolling Resistance ($F_{\text{rolling}}$)</h3>
+        <p>
+          Rolling resistance is caused by the mechanical hysteresis and deformation of tire elastomeric compounds as they rotate against asphalt:
+        </p>
+        <p>
+          $$F_{\text{rolling}} = C_{rr} \cdot m \cdot g$$
+        </p>
+        <p>
+          Where $C_{rr}$ is the coefficient of rolling resistance ($\approx 0.008\text{ to } 0.012$ for modern low-rolling-resistance tires), $m$ is vehicle mass ($kg$), and $g$ is gravitational acceleration ($9.81\text{ m/s}^2$). Crucially, rolling resistance is roughly linear with respect to velocity.
+        </p>
+
+        <h3>B. Aerodynamic Drag ($F_{\text{aerodynamic}}$)</h3>
+        <p>
+          As speed increases, aerodynamic resistance quickly overwhelms rolling resistance according to the classical fluid dynamics drag equation:
+        </p>
+        <blockquote>
+          $$F_{\text{aero}} = \frac{1}{2} \rho \cdot v^2 \cdot C_d \cdot A$$
+        </blockquote>
+        <p>
+          Where:
+        </p>
+        <ul>
+          <li>$\rho$ is ambient air density ($\approx 1.225\text{ kg/m}^3$ at sea level at 15°C).</li>
+          <li>$v$ is vehicle velocity relative to the air mass ($m/s$).</li>
+          <li>$C_d$ is the aerodynamic drag coefficient ($\approx 0.23$ for streamlined sedans; $\approx 0.38$ for large SUVs).</li>
+          <li>$A$ is the frontal projected surface area of the vehicle ($m^2$, typically $2.1 - 2.8\text{ m}^2$).</li>
+        </ul>
+
+        <h2>3. The Cubic Power Law: Why 130 km/h Punishes Your Wallet</h2>
+        <p>
+          While the drag force increases quadratically ($v^2$), the mechanical <strong>power</strong> required to overcome that drag at a given velocity is force multiplied by speed ($P = F \cdot v$), leading to a cubic relationship:
+        </p>
+        <p>
+          $$P_{\text{aero}} = \frac{1}{2} \rho \cdot v^3 \cdot C_d \cdot A$$
+        </p>
+        <p>
+          Observe the dramatic power escalation required just to punch through air resistance on a standard midsize crossover ($C_d = 0.32$, $A = 2.4\text{ m}^2$):
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Speed</th>
+              <th>Velocity ($m/s$)</th>
+              <th>Aerodynamic Drag Force ($N$)</th>
+              <th>Aero Power Required ($kW / HP$)</th>
+              <th>Fuel Consumption Index</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>60 km/h (37.3 mph)</td>
+              <td>16.67 m/s</td>
+              <td>130.4 N</td>
+              <td>2.17 kW (2.9 HP)</td>
+              <td>100 (Baseline)</td>
+            </tr>
+            <tr>
+              <td>90 km/h (55.9 mph)</td>
+              <td>25.00 m/s</td>
+              <td>293.4 N</td>
+              <td>7.34 kW (9.8 HP)</td>
+              <td>122 (+22%)</td>
+            </tr>
+            <tr>
+              <td>110 km/h (68.4 mph)</td>
+              <td>30.56 m/s</td>
+              <td>438.4 N</td>
+              <td>13.40 kW (18.0 HP)</td>
+              <td>148 (+48%)</td>
+            </tr>
+            <tr>
+              <td>130 km/h (80.8 mph)</td>
+              <td>36.11 m/s</td>
+              <td>612.3 N</td>
+              <td>22.11 kW (29.6 HP)</td>
+              <td>184 (+84%)</td>
+            </tr>
+            <tr>
+              <td>150 km/h (93.2 mph)</td>
+              <td>41.67 m/s</td>
+              <td>815.1 N</td>
+              <td>33.96 kW (45.5 HP)</td>
+              <td>232 (+132%)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Mid-Article Ad -->
+        <div class="adsense-slot-container" style="margin:2rem 0;">
+          <span class="adsense-label">Sponsored Telematics Information</span>
+          <div class="adsense-box adsense-in-article">
+            <ins class="adsbygoogle"
+                 style="display:block; width:100%; height:250px;"
+                 data-ad-client="ca-pub-0000000000000000"
+                 data-ad-slot="9876543210"
+                 data-ad-format="rectangle"
+                 data-full-width-responsive="true">
+              <div style="color:var(--text-muted); font-size:0.85rem; line-height:250px;">
+                Google AdSense Responsive In-Article Display
+              </div>
+            </ins>
+          </div>
+        </div>
+
+        <h2>4. The Engine Sweet Spot: Brake Specific Fuel Consumption (BSFC)</h2>
+        <p>
+          If aerodynamic resistance is lowest at 20 km/h, why isn't crawling at 20 km/h the most fuel-efficient cruising speed?
+        </p>
+        <p>
+          Internal combustion engines (ICE) suffer from thermal, mechanical, and pumping losses at very low RPM and low engine loads. An automotive engine reaches its peak thermal efficiency (lowest Brake Specific Fuel Consumption or BSFC) in its highest overdrive transmission gear at approximately 1,500 to 2,000 RPM.
+        </p>
+        <p>
+          When you balance thermodynamic engine efficiency against rising aerodynamic drag, the universal optimal cruising speed for internal combustion passenger cars is between <strong>75 and 90 km/h (47 to 56 mph)</strong>.
+        </p>
+        <p>
+          For Electric Vehicles (EVs), which maintain ~90% motor efficiency across almost all RPM ranges, energy consumption per kilometer rises monotonically with speed. (See our companion guide: <a href="ev-speed-range-consumption-guide.html">EV Speed vs Range Analysis</a>).
+        </p>
+
+        <h2>5. Practical Time vs Cost Calculations for Road Trips</h2>
+        <p>
+          Consider a typical 200 km (124 mile) interstate highway journey:
+        </p>
+        <ul>
+          <li><strong>Cruising at 100 km/h:</strong> Trip time = 120.0 minutes. Fuel consumed = ~13.0 Liters ($22.10 at $1.70/L).</li>
+          <li><strong>Cruising at 130 km/h:</strong> Trip time = 92.3 minutes. Fuel consumed = ~17.5 Liters ($29.75 at $1.70/L).</li>
+        </ul>
+        <p>
+          Speeding saved only 27 minutes, but burned an extra 4.5 liters of fuel, increased brake and tire wear, elevated collision risk exponentially, and incurred severe vulnerability to radar speed traps.
+        </p>
+
+        <h2>6. Actionable Telematics Recommendations</h2>
+        <p>
+          To optimize your highway economics:
+        </p>
+        <ol>
+          <li>Use our <a href="../index.html">AeroSpeed Speedometer</a> to maintain steady, true satellite ground speed rather than fluctuating manually.</li>
+          <li>Set a speed warning alert at 90 or 100 km/h to prevent subconscious acceleration creep during long drives.</li>
+          <li>Ensure correct tire inflation to minimize $C_{rr}$ rolling resistance. (Check our <a href="tire-size-speedometer-calibration-math.html">Tire Size Calibration Guide</a>).</li>
+        </ol>
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="toc-card">
+          <h4>Table of Contents</h4>
+          <ul class="toc-list">
+            <li><a href="#1-the-non-linear-cost-of-speed">1. Non-Linear Cost of Speed</a></li>
+            <li><a href="#2-total-road-load-equation">2. Total Road Load Equation</a></li>
+            <li><a href="#3-the-cubic-power-law-why-130-kmh-punishes-your-wallet">3. The Cubic Power Law</a></li>
+            <li><a href="#4-the-engine-sweet-spot-brake-specific-fuel-consumption-bsfc">4. BSFC & Cruising Sweet Spot</a></li>
+            <li><a href="#5-practical-time-vs-cost-calculations-for-road-trips">5. Time vs Cost Calculations</a></li>
+            <li><a href="#6-actionable-telematics-recommendations">6. Recommendations</a></li>
+          </ul>
+        </div>
+
+        <div class="toc-card">
+          <h4>Related Technical Guides</h4>
+          <ul class="toc-list">
+            <li><a href="ev-speed-range-consumption-guide.html">→ EV Speed vs Range Consumption</a></li>
+            <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html">→ Speedometer Calibration Guide</a></li>
+            <li><a href="understanding-speed-camera-radar-lidar-technology.html">→ Police Radar & LiDAR Physics</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 AeroSpeed Telematics Labs. All rights reserved.</div>
+        <div>
+          <a href="../index.html">Home</a> · 
+          <a href="../about.html">About</a> · 
+          <a href="../contact.html">Contact</a> · 
+          <a href="../privacy.html">Privacy</a> · 
+          <a href="../terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

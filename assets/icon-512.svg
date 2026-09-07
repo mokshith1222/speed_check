@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1329"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="accentGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#4facfe"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad512)"/>
+  <!-- Gauge Arc Outer -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#162646" stroke-width="20"/>
+  <circle cx="256" cy="256" r="180" fill="none" stroke="url(#accentGrad512)" stroke-width="20" stroke-dasharray="850" stroke-dashoffset="260" stroke-linecap="round"/>
+  <!-- Needle and center -->
+  <line x1="256" y1="256" x2="380" y2="180" stroke="#00f2fe" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="30" fill="#00f2fe"/>
+  <circle cx="256" cy="256" r="16" fill="#070b14"/>
+  <!-- Speed Ticks -->
+  <circle cx="256" cy="100" r="8" fill="#00f2fe"/>
+  <circle cx="130" cy="160" r="8" fill="#4facfe"/>
+  <circle cx="382" cy="160" r="8" fill="#00f2fe"/>
+  <circle cx="100" cy="256" r="8" fill="#4facfe"/>
+  <circle cx="412" cy="256" r="8" fill="#00f2fe"/>
+</svg>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nautical Knots vs MPH vs KM/H: History, Math, & Applications - AeroSpeed</title>
+  <meta name="description" content="Explore why aviation and maritime navigation rely on knots (kts). Learn the history of the chip log, mathematical conversions to mph and km/h, and GPS telemetry.">
+  <meta name="author" content="Dr. Nathan Vance">
+  <link rel="canonical" href="https://aerospeed-gps.com/articles/nautical-knots-vs-mph-speed-measurement.html">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Nautical Knots vs MPH vs KM/H: History, Mathematics, and Applications",
+    "description": "An exhaustive metrological exploration of nautical knots, latitude geometry, pitot tubes, and satellite ground speed.",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Nathan Vance",
+      "jobTitle": "Lead Telematics & GNSS Systems Architect"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AeroSpeed Telematics Labs",
+      "url": "https://aerospeed-gps.com/"
+    },
+    "datePublished": "2026-02-15T08:00:00+00:00",
+    "mainEntityOfPage": "https://aerospeed-gps.com/articles/nautical-knots-vs-mph-speed-measurement.html"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Speedometer Tool</a></li>
+          <li><a href="index.html" class="nav-link active">Knowledge Center</a></li>
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="../about.html" class="nav-link">About Engineering</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumbs" style="margin-top:2rem;">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Knowledge Center</a>
+      <span>/</span>
+      <span>Maritime & Aviation Metrology</span>
+    </div>
+
+    <div class="article-header">
+      <h1 class="article-main-title">Nautical Knots vs MPH vs KM/H: History, Mathematics, and Applications</h1>
+      <p style="color:var(--text-secondary); font-size:1.15rem; line-height:1.6;">
+        Why do ships and commercial aircraft measure velocity in "knots" instead of statute miles per hour or kilometers per hour? Discover the spherical Earth geometry and navigational history behind the knot.
+      </p>
+
+      <div class="author-meta-box">
+        <div class="author-avatar">NV</div>
+        <div class="author-info-text">
+          <h4>By Dr. Nathan Vance, Ph.D.</h4>
+          <p>Published February 15, 2026 · 6 min read (1,220 words)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ad Placement -->
+    <div class="adsense-slot-container" style="margin:1.5rem 0;">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-box">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:90px;"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true">
+          <div style="color:var(--text-muted); font-size:0.85rem; line-height:90px;">
+            Google AdSense Responsive Header Banner
+          </div>
+        </ins>
+      </div>
+    </div>
+
+    <div class="article-content-container">
+      <article class="prose">
+        <h2>1. The 16th-Century Origin: The Chip Log and Knotted Rope</h2>
+        <p>
+          Before modern satellite navigation or electronic pitot tubes, 16th-century mariners required a reliable method to calculate vessel speed across open oceans. They devised a device called the <strong>Chip Log</strong>: a pie-shaped wooden board weighted with lead along one curved edge so it would float vertically in the water and resist being pulled forward.
+        </p>
+        <p>
+          The chip was fastened to a long spool of light rope, which had physical knots tied into it at regular intervals (typically 47 feet and 3 inches apart).
+        </p>
+        <p>
+          When thrown overboard from the stern of a moving sailing vessel, the line paid out freely. A sailor inverted a 28-second sand hourglass while another sailor counted the number of physical knots that slipped through their hands before the sand ran out.
+        </p>
+        <p>
+          If 6 knots passed through the sailor's fingers in 28 seconds, the ship was traveling at <strong>"6 knots"</strong>.
+        </p>
+
+        <h2>2. Mathematical Definition of the Nautical Mile</h2>
+        <p>
+          Unlike the arbitrary statute mile (defined historically as 5,280 Roman paces) or the metric kilometer (originally defined as one ten-millionth of the distance from the equator to the North Pole), the <strong>Nautical Mile (NM)</strong> is derived directly from the geometry of the Earth.
+        </p>
+        <blockquote>
+          <strong>The Nautical Definition:</strong> One nautical mile is equal to exactly <strong>one minute of arc of latitude ($1'$)</strong> along any meridian of longitude.
+        </blockquote>
+        <p>
+          Because there are $360^\circ$ in a circle and $60\text{ arcminutes}$ in each degree:
+        </p>
+        <p>
+          $$\text{Earth Circumference} = 360^\circ \times 60' = 21,600\text{ Nautical Miles}$$
+        </p>
+        <p>
+          In 1929, the First International Extraordinary Hydrographic Conference in Monaco established the international standard:
+        </p>
+        <p>
+          $$1\text{ International Nautical Mile} = 1,852\text{ meters exactly } (6,076.12\text{ feet})$$
+        </p>
+        <p>
+          Therefore, <strong>1 Knot (kn) = 1 Nautical Mile per Hour</strong>:
+        </p>
+        <p>
+          $$1\text{ Knot} = 1.852\text{ km/h} = 1.15078\text{ mph} = 0.51444\text{ m/s}$$
+        </p>
+
+        <!-- Mid-Article Ad -->
+        <div class="adsense-slot-container" style="margin:2rem 0;">
+          <span class="adsense-label">Sponsored Telematics Information</span>
+          <div class="adsense-box adsense-in-article">
+            <ins class="adsbygoogle"
+                 style="display:block; width:100%; height:250px;"
+                 data-ad-client="ca-pub-0000000000000000"
+                 data-ad-slot="9876543210"
+                 data-ad-format="rectangle"
+                 data-full-width-responsive="true">
+              <div style="color:var(--text-muted); font-size:0.85rem; line-height:250px;">
+                Google AdSense Responsive In-Article Display
+              </div>
+            </ins>
+          </div>
+        </div>
+
+        <h2>3. Why Aviation & Maritime Navigation Exclusively Use Knots</h2>
+        <p>
+          In an era of advanced GPS avionics, why do Boeing, Airbus, the US Navy, and international air traffic control retain knots?
+        </p>
+        <p>
+          The answer lies in <strong>seamless chart plotting</strong>. When an aircraft pilot or ship captain cruises at 120 knots for 30 minutes, they have traveled exactly 60 nautical miles. On a standard navigational chart, 60 nautical miles corresponds directly to <strong>1 full degree of latitude ($1^\circ$)</strong>.
+        </p>
+        <p>
+          Navigators can immediately place dividers on the latitude scale of a paper chart or electronic flight bag (EFB) to measure distance without performing tedious unit conversions between statute miles and coordinates.
+        </p>
+
+        <h2>4. Comprehensive Conversion Reference Table</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Knots (kn / kts)</th>
+              <th>Statute MPH</th>
+              <th>Kilometers/Hour (km/h)</th>
+              <th>Meters/Second (m/s)</th>
+              <th>Typical Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5.0 kn</td>
+              <td>5.75 mph</td>
+              <td>9.26 km/h</td>
+              <td>2.57 m/s</td>
+              <td>Harbor No-Wake Zone</td>
+            </tr>
+            <tr>
+              <td>15.0 kn</td>
+              <td>17.26 mph</td>
+              <td>27.78 km/h</td>
+              <td>7.72 m/s</td>
+              <td>Cargo Ship Cruising</td>
+            </tr>
+            <tr>
+              <td>25.0 kn</td>
+              <td>28.77 mph</td>
+              <td>46.30 km/h</td>
+              <td>12.86 m/s</td>
+              <td>Fast Ferry / Speedboat</td>
+            </tr>
+            <tr>
+              <td>65.0 kn</td>
+              <td>74.80 mph</td>
+              <td>120.38 km/h</td>
+              <td>33.44 m/s</td>
+              <td>Light Aircraft (Cessna 172) Takeoff</td>
+            </tr>
+            <tr>
+              <td>140.0 kn</td>
+              <td>161.11 mph</td>
+              <td>259.28 km/h</td>
+              <td>72.02 m/s</td>
+              <td>Commercial Jet Approach</td>
+            </tr>
+            <tr>
+              <td>480.0 kn</td>
+              <td>552.37 mph</td>
+              <td>888.96 km/h</td>
+              <td>246.93 m/s</td>
+              <td>High-Altitude Jetliner Cruise</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>5. Airspeed vs Ground Speed via GPS Telematics</h2>
+        <p>
+          In aviation, there is a fundamental distinction between <strong>Indicated Airspeed (IAS)</strong> measured by forward-facing pitot tubes (which senses dynamic air pressure $\frac{1}{2}\rho v^2$) and <strong>Ground Speed (GS)</strong> measured over the Earth's surface.
+        </p>
+        <p>
+          If an aircraft flies with an airspeed of 150 knots directly into a 40-knot headwind, its actual speed relative to ground tracking stations is only 110 knots. By toggling the <strong>KNOTS</strong> unit in the <a href="../index.html">AeroSpeed GPS Speedometer</a>, pilots, sailors, and passengers can monitor true GNSS ground speed in real time.
+        </p>
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="toc-card">
+          <h4>Table of Contents</h4>
+          <ul class="toc-list">
+            <li><a href="#1-the-16th-century-origin-the-chip-log-and-knotted-rope">1. Chip Log Origins</a></li>
+            <li><a href="#2-mathematical-definition-of-the-nautical-mile">2. Nautical Mile Geometry</a></li>
+            <li><a href="#3-why-aviation--maritime-navigation-exclusively-use-knots">3. Navigational Chart Plotting</a></li>
+            <li><a href="#4-comprehensive-conversion-reference-table">4. Unit Conversion Table</a></li>
+            <li><a href="#5-airspeed-vs-ground-speed-via-gps-telematics">5. Airspeed vs Ground Speed</a></li>
+          </ul>
+        </div>
+
+        <div class="toc-card">
+          <h4>Related Technical Guides</h4>
+          <ul class="toc-list">
+            <li><a href="how-gps-calculates-speed-doppler-shift.html">→ GPS Doppler Velocity Calculations</a></li>
+            <li><a href="speed-limits-fuel-efficiency-aerodynamics.html">→ Aerodynamic Drag Equation</a></li>
+            <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html">→ Speedometer Calibration Guide</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 AeroSpeed Telematics Labs. All rights reserved.</div>
+        <div>
+          <a href="../index.html">Home</a> · 
+          <a href="../about.html">About</a> · 
+          <a href="../contact.html">Contact</a> · 
+          <a href="../privacy.html">Privacy</a> · 
+          <a href="../terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

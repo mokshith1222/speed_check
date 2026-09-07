@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Car Speed Sensors (VSS) and CAN-Bus Broadcast Vehicle Velocity - AeroSpeed</title>
+  <meta name="description" content="Technical guide to automotive Vehicle Speed Sensors (VSS), Hall-effect magnetic pickups, ABS tone rings, and Controller Area Network (CAN-Bus) speed PID broadcasting.">
+  <meta name="author" content="Elena Rostova, Automotive Systems Engineer">
+  <link rel="canonical" href="https://aerospeed-gps.com/articles/can-bus-obd2-vehicle-speed-sensors.html">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Schema.org BlogPosting & Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "How Car Speed Sensors (VSS) and CAN-Bus Broadcast Vehicle Velocity",
+        "description": "An in-depth engineering breakdown of mechanical gear pickups, variable reluctance sensors, Hall effect magnetic tone rings, and CAN-bus OBD-II PID 0x0D message arbitration.",
+        "author": {
+          "@type": "Person",
+          "name": "Elena Rostova",
+          "jobTitle": "Automotive Telematics & Embedded Systems Engineer"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AeroSpeed Telematics Labs",
+          "url": "https://aerospeed-gps.com/"
+        },
+        "datePublished": "2026-02-05T09:00:00+00:00",
+        "dateModified": "2026-02-22T14:15:00+00:00",
+        "mainEntityOfPage": "https://aerospeed-gps.com/articles/can-bus-obd2-vehicle-speed-sensors.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aerospeed-gps.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": "https://aerospeed-gps.com/articles/index.html" },
+          { "@type": "ListItem", "position": 3, "name": "CAN-Bus & Speed Sensors", "item": "https://aerospeed-gps.com/articles/can-bus-obd2-vehicle-speed-sensors.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Speedometer Tool</a></li>
+          <li><a href="index.html" class="nav-link active">Knowledge Center</a></li>
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="../about.html" class="nav-link">About Engineering</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" style="margin-top:2rem;">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Knowledge Center</a>
+      <span>/</span>
+      <span>Vehicle Electronics & CAN-Bus Telemetry</span>
+    </div>
+
+    <div class="article-header">
+      <h1 class="article-main-title">How Car Speed Sensors (VSS) and CAN-Bus Broadcast Vehicle Velocity</h1>
+      <p style="color:var(--text-secondary); font-size:1.15rem; line-height:1.6;">
+        From physical wheel tone rings and Hall-effect electromagnetic pulses to high-speed Controller Area Network (CAN-Bus) micro-controller frames, discover how modern vehicles compute, digitize, and broadcast real-time speed.
+      </p>
+
+      <div class="author-meta-box">
+        <div class="author-avatar" style="background:linear-gradient(135deg, #f39c12, #d35400);">ER</div>
+        <div class="author-info-text">
+          <h4>By Elena Rostova</h4>
+          <p>Published February 5, 2026 · Updated February 22, 2026 · 8 min read (1,540 words)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- In-Article Top Ad Placement -->
+    <div class="adsense-slot-container" style="margin:1.5rem 0;">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-box">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:90px;"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true">
+          <div style="color:var(--text-muted); font-size:0.85rem; line-height:90px;">
+            Google AdSense Responsive Header Unit
+          </div>
+        </ins>
+      </div>
+    </div>
+
+    <div class="article-content-container">
+      <article class="prose">
+        <h2>1. The Architecture of Automotive Velocity Sensing</h2>
+        <p>
+          Before a velocity readout illuminates your dashboard or passes into an OBD-II diagnostic dongle, mechanical rotational energy must be converted into high-frequency electronic signals. Unlike pure satellite telematics systems such as the <a href="../index.html">AeroSpeed GPS Speedometer</a>, which measure velocity relative to Earth's geodetic surface, internal vehicle electronics measure the angular rotation of the drivetrain.
+        </p>
+        <p>
+          In modern passenger and commercial vehicles, speed measurement is a multi-tiered process involving:
+        </p>
+        <ol>
+          <li><strong>Wheel Speed Sensors (WSS) & Tone Rings:</strong> Magnetic reluctance or Hall-effect sensors mounted at each wheel hub.</li>
+          <li><strong>Transmission Vehicle Speed Sensor (VSS):</strong> A dedicated sensor sampling transmission output shaft rotation.</li>
+          <li><strong>Electronic Control Units (ECUs):</strong> Dedicated microprocessors (such as the Anti-lock Braking System ECU and Engine Control Module) calculating pulse frequencies.</li>
+          <li><strong>Controller Area Network (CAN-Bus):</strong> A differential two-wire serial communication bus broadcasting velocity payloads to the instrument cluster, cruise control, transmission controller, and head-up display.</li>
+        </ol>
+
+        <h2>2. Sensor Metrology: Variable Reluctance vs Hall Effect</h2>
+        <p>
+          Automotive speed sensing relies primarily on two solid-state electromagnetic transducer designs:
+        </p>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Sensor Type</th>
+                <th>Signal Architecture</th>
+                <th>Low-Speed Sensitivity</th>
+                <th>Modern Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Variable Reluctance (VR)</strong></td>
+                <td>Analog sine wave; amplitude scales with RPM</td>
+                <td>Poor below 3–5 km/h (low voltage amplitude)</td>
+                <td>Legacy 1990–2010 ABS systems, transmission output shafts</td>
+              </tr>
+              <tr>
+                <td><strong>Active Hall Effect</strong></td>
+                <td>Digital square wave (constant 0–5V or current loop)</td>
+                <td>Flawless down to 0.0 km/h (true zero-speed sensing)</td>
+                <td>Modern ABS, traction control, stability control, autonomous driving</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>The Hall-Effect Operating Principle</h3>
+        <p>
+          Active Hall-effect sensors incorporate a semiconductor plate subjected to a constant bias current. When ferromagnetic teeth on a rotating reluctor wheel (or alternating north/south magnetic poles embedded inside a wheel bearing seal) pass the sensor face, the perpendicular magnetic flux deflects the electrons, creating a measurable <em>Hall voltage</em> ($V_H$):
+        </p>
+        <div class="formula-card">
+          <div class="formula-title">Hall Voltage Transduction Equation</div>
+          <div class="formula-math">V_H = \frac{I \cdot B}{n \cdot q \cdot t}</div>
+          <p class="formula-desc">Where $I$ is bias current, $B$ is magnetic flux density, $n$ is charge carrier density, $q$ is elementary charge, and $t$ is semiconductor thickness.</p>
+        </div>
+        <p>
+          An internal Schmitt trigger converts this analog microvolt oscillation into a crisp digital square wave. An ABS tone ring with 48 teeth rotating on a tire with a 2.0-meter rolling circumference generates exactly 24 pulses per meter of forward travel, or 667 Hz at 100 km/h.
+        </p>
+
+        <h2>3. The CAN-Bus Broadcast Protocol</h2>
+        <p>
+          Once the ABS ECU or Transmission ECU calculates the pulse frequency, it does not run individual wires to every gauge. Instead, it encodes the velocity into a digital packet transmitted over the <strong>High-Speed CAN-Bus</strong> (ISO 11898-2) at 500 kbps across two twisted copper wires: <code>CAN_H</code> (CAN High) and <code>CAN_L</code> (CAN Low).
+        </p>
+        <p>
+          CAN-Bus uses differential voltage signaling to reject electromagnetic interference from vehicle ignition coils, alternators, and EV power inverters. When transmitting a dominant bit (0), <code>CAN_H</code> is driven to 3.5V and <code>CAN_L</code> drops to 1.5V, creating a 2.0V differential.
+        </p>
+
+        <h3>Standard OBD-II Parameter ID (PID) 0x0D</h3>
+        <p>
+          When you plug an OBD-II scan tool into your car's diagnostic port under the dashboard, the scanner requests Parameter ID <code>0x0D</code> (Vehicle Speed Sensor) using the SAE J1979 standard:
+        </p>
+        <ul>
+          <li><strong>Request Frame:</strong> <code>0x7DF [02 01 0D 00 00 00 00 00]</code> (Query PID 0x0D from Mode 01)</li>
+          <li><strong>Response Frame:</strong> <code>0x7E8 [03 41 0D 5A 00 00 00 00]</code></li>
+          <li><strong>Data Byte Decoding:</strong> The single response byte (hexadecimal <code>0x5A</code>) converts directly to decimal: $5A_{16} = 90_{10}$ km/h (55.92 mph).</li>
+        </ul>
+
+        <h2>4. Why CAN-Bus Speed Differs from GPS Speed</h2>
+        <p>
+          Many vehicle enthusiasts notice that the speed reported by an OBD-II scanner reading direct CAN-Bus data differs from both the dashboard speedometer needle and a satellite GPS receiver.
+        </p>
+        <ul>
+          <li><strong>CAN-Bus Raw Speed vs Dashboard Gauge:</strong> The CAN-Bus ECU internal speed byte is the un-inflated engineering estimate based on factory tire circumference. However, the instrument cluster firmware deliberately injects a 3% to 6% positive offset to comply with international regulations such as UNECE R39 (detailed in our <a href="gps-speedometer-accuracy-vs-car-speedometer.html">GPS vs Car Speedometer Calibration Guide</a>).</li>
+          <li><strong>CAN-Bus vs True GPS Speed:</strong> If your tires are worn down by 6mm (reducing tire radius and increasing rotational speed per kilometer) or you installed aftermarket oversized rims, the CAN-Bus speed reading will be fundamentally skewed. GPS satellite Doppler measurements (explained in <a href="how-gps-calculates-speed-doppler-shift.html">How GPS Calculates Speed</a>) are immune to wheel slip, tire pressure drops, and mechanical gearing changes.</li>
+        </ul>
+
+        <div class="callout-box info">
+          <h4>Key Engineering Takeaway</h4>
+          <p>
+            The vehicle CAN-Bus calculates <em>wheel rotational velocity</em>, which is dependent on tire radius and subject to mechanical slip. The <a href="../index.html">AeroSpeed GPS Speedometer</a> calculates <em>true geodetic ground velocity</em> via orbital satellite microwave Doppler shift, making GPS the ultimate reference standard for calibration.
+          </p>
+        </div>
+
+        <h2>5. Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <div class="faq-question">What happens if a wheel speed sensor fails?</div>
+            <div class="faq-answer">
+              A failed Hall sensor or damaged tone ring causes the ABS ECU to illuminate the ABS, Traction Control, and Stability Control warning lamps. The vehicle defaults to fail-safe mode, disabling automated cruise control and torque vectoring.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I recalibrate my vehicle's CAN-Bus speed for larger tires?</div>
+            <div class="faq-answer">
+              Yes. Many modern trucks and performance vehicles allow technician-level reprogramming of the Body Control Module (BCM) or ABS module to update the tire circumference value (revolutions per mile). You can calculate your exact percentage offset using our <a href="tire-size-speedometer-calibration-math.html">Tire Size Calibration Math Guide</a>.
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Technical Guides -->
+        <div class="related-guides-box" style="margin-top:3rem; padding:1.5rem; background:var(--card-bg); border-radius:12px; border:1px solid var(--border-color);">
+          <h3 style="margin-top:0;">Related Technical Research Guides</h3>
+          <ul style="margin-bottom:0; line-height:1.8;">
+            <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html">GPS Speedometer vs Car Speedometer: Why Your Dashboard Reads High</a></li>
+            <li><a href="tire-size-speedometer-calibration-math.html">Tire Size Changes & Speedometer Calibration Mathematics</a></li>
+            <li><a href="how-gps-calculates-speed-doppler-shift.html">How GPS Calculates Speed: Doppler Frequency Shift vs Position Deltas</a></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="brand-logo footer-logo">
+          <span>AERO<span class="accent-text">SPEED</span></span>
+        </div>
+        <p class="footer-text">
+          High-precision GNSS velocity metrology, vehicle telematics research, and heads-up display optics.
+        </p>
+        <p class="copyright">© 2026 AeroSpeed Telematics Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Essential Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">Live GPS Speedometer</a></li>
+          <li><a href="../index.html#hudMode">HUD Windshield Projection</a></li>
+          <li><a href="../index.html#timerMode">0-60 MPH Performance Timer</a></li>
+          <li><a href="../index.html#tripLogger">CSV Telematics Trip Logger</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Knowledge Center</h4>
+        <ul class="footer-links">
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html">Speedometer Calibration</a></li>
+          <li><a href="how-gps-calculates-speed-doppler-shift.html">Doppler Velocity Physics</a></li>
+          <li><a href="can-bus-obd2-vehicle-speed-sensors.html">CAN-Bus & Speed Sensors</a></li>
+          <li><a href="index.html">All 20 Research Articles →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Compliance & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html">About Engineering Team</a></li>
+          <li><a href="../contact.html">Contact Laboratory</a></li>
+          <li><a href="../privacy.html">Privacy Policy (GDPR/CCPA)</a></li>
+          <li><a href="../terms.html">Terms & Conditions</a></li>
+          <li><a href="../disclaimer.html">Telematics Disclaimer</a></li>
+          <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

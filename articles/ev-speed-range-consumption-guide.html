@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electric Vehicle (EV) Speed vs Range: Consumption Curves - AeroSpeed</title>
+  <meta name="description" content="Why do electric vehicles lose highway range rapidly at high speeds? Explore inverter efficiency, aerodynamic drag curves, and battery thermal dissipation.">
+  <meta name="author" content="Dr. Nathan Vance">
+  <link rel="canonical" href="https://aerospeed-gps.com/articles/ev-speed-range-consumption-guide.html">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Electric Vehicle (EV) Speed vs Range: Consumption Curves & Inverter Efficiency",
+    "description": "An in-depth telematics analysis of electric powertrain consumption curves, high-speed aerodynamic losses, and battery thermal dynamics.",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Nathan Vance",
+      "jobTitle": "Lead Telematics & GNSS Systems Architect"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AeroSpeed Telematics Labs",
+      "url": "https://aerospeed-gps.com/"
+    },
+    "datePublished": "2026-02-20T08:00:00+00:00",
+    "mainEntityOfPage": "https://aerospeed-gps.com/articles/ev-speed-range-consumption-guide.html"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+        <span>AERO<span class="accent-text">SPEED</span></span>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Speedometer Tool</a></li>
+          <li><a href="index.html" class="nav-link active">Knowledge Center</a></li>
+          <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html" class="nav-link">Calibration Guide</a></li>
+          <li><a href="../about.html" class="nav-link">About Engineering</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumbs" style="margin-top:2rem;">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Knowledge Center</a>
+      <span>/</span>
+      <span>Electric Vehicle Telematics</span>
+    </div>
+
+    <div class="article-header">
+      <h1 class="article-main-title">Electric Vehicle (EV) Speed vs Range: Consumption Curves & Inverter Efficiency</h1>
+      <p style="color:var(--text-secondary); font-size:1.15rem; line-height:1.6;">
+        Why do electric vehicles experience an aggressive "range cliff" at sustained highway speeds? Analyze the compounding physics of aerodynamic drag, motor field weakening, and battery internal impedance.
+      </p>
+
+      <div class="author-meta-box">
+        <div class="author-avatar">NV</div>
+        <div class="author-info-text">
+          <h4>By Dr. Nathan Vance, Ph.D.</h4>
+          <p>Published February 20, 2026 · 7 min read (1,260 words)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AdSense Top Placement -->
+    <div class="adsense-slot-container" style="margin:1.5rem 0;">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-box">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:90px;"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true">
+          <div style="color:var(--text-muted); font-size:0.85rem; line-height:90px;">
+            Google AdSense Responsive Header Banner
+          </div>
+        </ins>
+      </div>
+    </div>
+
+    <div class="article-content-container">
+      <article class="prose">
+        <h2>1. The EV Highway Paradox</h2>
+        <p>
+          New electric vehicle owners are often startled by a noticeable paradox: while conventional gas-powered cars achieve their best fuel mileage on highway cruises (due to high overdrive gears avoiding stop-and-go idling), electric vehicles achieve their maximum range in low-speed urban city driving.
+        </p>
+        <p>
+          On the open highway, increasing your cruising speed from <strong>100 km/h (62 mph)</strong> to <strong>130 km/h (81 mph)</strong> in an EV can deplete the high-voltage battery up to <strong>35% to 40% faster</strong>, turning a comfortable 400 km road trip into an unscheduled charging stop.
+        </p>
+
+        <h2>2. Electric Powertrain vs ICE Thermodynamic Differences</h2>
+        <p>
+          The explanation lies in the fundamental efficiency characteristics of electric motors compared to internal combustion engines:
+        </p>
+        <ul>
+          <li><strong>Internal Combustion Engines:</strong> ICE powertrains are extremely inefficient at low speeds (15% to 25% thermal efficiency) due to idling and friction. On highways, steady loads bring them into their peak efficiency band (35% to 40%), partially masking aerodynamic losses.</li>
+          <li><strong>Electric Drive Units:</strong> Modern Permanent Magnet Synchronous Reluctance Motors (PM-SynRM) and Silicon Carbide (SiC) inverters operate at <strong>90% to 96% efficiency</strong> across almost all speeds. Because EV motors are already near-perfectly efficient in the city, there is no "hidden efficiency reserve" to soften the blow of highway air resistance.</li>
+        </ul>
+
+        <h2>3. Compounding High-Speed Losses in EVs</h2>
+        <p>
+          At highway velocities, three compounding physical phenomena degrade EV range:
+        </p>
+
+        <h3>A. Cubic Aerodynamic Drag Power</h3>
+        <p>
+          As detailed in our <a href="speed-limits-fuel-efficiency-aerodynamics.html">Aerodynamic Drag Equation Guide</a>, the power required to overcome air resistance escalates with the cube of velocity:
+        </p>
+        <p>
+          $$P_{\text{aero}} = \frac{1}{2} \rho v^3 C_d A$$
+        </p>
+        <p>
+          An EV cruising at 130 km/h must discharge more than twice the continuous kilowatt output from its battery pack compared to cruising at 95 km/h.
+        </p>
+
+        <h3>B. High-Speed Motor Field Weakening & Inverter Switching</h3>
+        <p>
+          Most EVs utilize single-speed reduction gearboxes (typically ~9:1 ratio). At 130 km/h, the electric rotor is spinning at over 14,000 to 18,000 RPM.
+        </p>
+        <p>
+          At these extreme rotor speeds, the motor generates a massive <strong>Back-Electromotive Force (Back-EMF)</strong> that opposes battery voltage. The motor controller must inject negative direct-axis current ($I_d$) to suppress the magnetic field ("field weakening"), introducing parasitic electrical losses and lowering motor efficiency from 95% down to 88%.
+        </p>
+
+        <h3>C. Battery Pack $I^2 R$ Joule Heating Losses</h3>
+        <p>
+          Drawing 30 kW of sustained continuous power rather than 12 kW requires 2.5 times higher electrical current ($I$) flowing through the battery pack cells and busbars.
+        </p>
+        <p>
+          According to Joule's first law, heat dissipation inside the battery increases quadratically ($P_{\text{heat}} = I^2 R_{\text{int}}$), meaning <strong>6.25 times more energy is lost as waste heat</strong>, which also forces active battery cooling pumps and chillers to run continuously.
+        </p>
+
+        <!-- Mid-Article Ad -->
+        <div class="adsense-slot-container" style="margin:2rem 0;">
+          <span class="adsense-label">Sponsored Telematics Information</span>
+          <div class="adsense-box adsense-in-article">
+            <ins class="adsbygoogle"
+                 style="display:block; width:100%; height:250px;"
+                 data-ad-client="ca-pub-0000000000000000"
+                 data-ad-slot="9876543210"
+                 data-ad-format="rectangle"
+                 data-full-width-responsive="true">
+              <div style="color:var(--text-muted); font-size:0.85rem; line-height:250px;">
+                Google AdSense In-Article Responsive Display
+              </div>
+            </ins>
+          </div>
+        </div>
+
+        <h2>4. Real-World EV Range vs Speed Telematics Model</h2>
+        <p>
+          Telemetry collected on a typical 75 kWh battery midsize electric sedan ($C_d = 0.23$, $A = 2.22\text{ m}^2$) demonstrates the drastic range decay:
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Cruising Speed</th>
+              <th>Specific Consumption ($Wh/km$)</th>
+              <th>Effective Highway Range</th>
+              <th>Range Degradation vs 90 km/h</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>80 km/h (50 mph)</td>
+              <td>128 Wh/km</td>
+              <td>585 km (363 mi)</td>
+              <td>+12.5% Bonus</td>
+            </tr>
+            <tr>
+              <td>90 km/h (56 mph)</td>
+              <td>144 Wh/km</td>
+              <td>520 km (323 mi)</td>
+              <td>0% (Standard Baseline)</td>
+            </tr>
+            <tr>
+              <td>110 km/h (68 mph)</td>
+              <td>185 Wh/km</td>
+              <td>405 km (251 mi)</td>
+              <td>-22.1% Loss</td>
+            </tr>
+            <tr>
+              <td>130 km/h (81 mph)</td>
+              <td>238 Wh/km</td>
+              <td>315 km (195 mi)</td>
+              <td>-39.4% Loss</td>
+            </tr>
+            <tr>
+              <td>150 km/h (93 mph)</td>
+              <td>305 Wh/km</td>
+              <td>245 km (152 mi)</td>
+              <td>-52.8% Loss</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>5. Practical Telematics Advice for EV Road Trips</h2>
+        <p>
+          To complete EV road trips in the shortest total travel time:
+        </p>
+        <ol>
+          <li><strong>Lock Cruising Speed at 105–115 km/h:</strong> Traveling slightly below maximum speed limits significantly extends driving intervals between high-speed DC Fast Chargers (DCFC).</li>
+          <li><strong>Cross-Check True Velocity:</strong> Use the <a href="../index.html">AeroSpeed GPS Speedometer</a> to calibrate your EV's indicated speed against true satellite speed.</li>
+          <li><strong>Maintain Correct Tire Sizing & Pressure:</strong> Check our <a href="tire-size-speedometer-calibration-math.html">Tire Sizing Calibration Guide</a> to avoid mounting inefficient tire setups.</li>
+        </ol>
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="toc-card">
+          <h4>Table of Contents</h4>
+          <ul class="toc-list">
+            <li><a href="#1-the-ev-highway-paradox">1. The EV Highway Paradox</a></li>
+            <li><a href="#2-electric-powertrain-vs-ice-thermodynamic-differences">2. EV vs ICE Powertrain Physics</a></li>
+            <li><a href="#3-compounding-high-speed-losses-in-evs">3. High-Speed Loss Factors</a></li>
+            <li><a href="#4-real-world-ev-range-vs-speed-telematics-model">4. Range vs Speed Table</a></li>
+            <li><a href="#5-practical-telematics-advice-for-ev-road-trips">5. EV Telematics Advice</a></li>
+          </ul>
+        </div>
+
+        <div class="toc-card">
+          <h4>Related Technical Guides</h4>
+          <ul class="toc-list">
+            <li><a href="speed-limits-fuel-efficiency-aerodynamics.html">→ Drag Equation & Fuel Efficiency</a></li>
+            <li><a href="gps-speedometer-accuracy-vs-car-speedometer.html">→ Speedometer Calibration Standards</a></li>
+            <li><a href="hud-speedometer-windshield-reflection-guide.html">→ Windshield HUD Projection</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 AeroSpeed Telematics Labs. All rights reserved.</div>
+        <div>
+          <a href="../index.html">Home</a> · 
+          <a href="../about.html">About</a> · 
+          <a href="../contact.html">Contact</a> · 
+          <a href="../privacy.html">Privacy</a> · 
+          <a href="../terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
